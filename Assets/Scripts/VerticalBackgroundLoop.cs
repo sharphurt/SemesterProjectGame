@@ -64,7 +64,7 @@ public class VerticalBackgroundLoop : MonoBehaviour
     private void Update()
     {
         foreach (var obj in levels)
-            obj.transform.position += new Vector3(0, scrollSpeed / 100f, 0);
+            obj.transform.position += new Vector3(0, scrollSpeed, 0) * Time.deltaTime;
         
     }
 
