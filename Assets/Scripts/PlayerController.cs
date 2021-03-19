@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
-
-    public Gun gun;
-
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();

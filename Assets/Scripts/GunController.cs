@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class GunController : MonoBehaviour
 {
-    public float shootPeriod;
-    public GameObject bullet;
-
-    private Transform firePoint;
-
-    void Start()
+    public float shootingPeriod;
+    public Gun gun;
+    public Transform target;
+    
+    private void Start()
     {
-        firePoint = GetComponent<Transform>();
+        gun.parentCollider = GetComponentInParent<Collider2D>();
+        gun.firePoint = GetComponent<Transform>();
         StartCoroutine(nameof(DoTaskPeriodically));
     }
 
-    private IEnumerator DoTaskPeriodically()
+    public IEnumerator DoTaskPeriodically()
     {
         while (true)
         {
-            Shoot();
-            yield return new WaitForSeconds(shootPeriod);
+            gun.Shoot(target);
+            yield return new WaitForSeconds(shootingPeriod);
         }
-    }
-
-    private void Shoot()
-    {
-        Instantiate(bullet, firePoint.position, firePoint.rotation);
     }
 }
