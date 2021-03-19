@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine;
 using System.Collections;
 
-public class CarController : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public Joystick joystick;
 
@@ -13,12 +13,12 @@ public class CarController : MonoBehaviour
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
 
+    public Gun gun;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
-        var size = boxCollider2D.size;
     }
 
 
