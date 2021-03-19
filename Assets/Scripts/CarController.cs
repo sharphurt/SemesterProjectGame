@@ -34,6 +34,6 @@ public class CarController : MonoBehaviour
         rb.velocity = new Vector2(joystick.Horizontal * acceleration + Input.GetAxis("Horizontal") * acceleration,
             joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
 
-        rb.rotation = Mathf.Asin(joystick.Horizontal) * -Mathf.PI * acceleration;
+        rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
     }
 }
