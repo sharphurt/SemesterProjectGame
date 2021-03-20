@@ -8,7 +8,6 @@ public class Entity : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log($"{gameObject.tag} takes damage {damage}");
         health -= damage;
         if (health <= 0)
             Die();

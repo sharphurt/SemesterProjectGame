@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemy;
+    public EnemyController enemy;
     public float spawnPeriod;
 
-    public Vector2 leftEdge;
-    public Vector2 rightEdge;
+    public Bounds spawningArea;
+    public Bounds destinationArea;
 
-    void Start() => StartCoroutine(nameof(DoTaskPeriodically));
+    public float movingToDestinationSpeed;
+
+    void Start()
+    {
+        /*Debug.Log(spawningArea.bounds);
+        Debug.Log(destinationArea.bounds);*/
+        StartCoroutine(nameof(DoTaskPeriodically));
+    }
 
     public IEnumerator DoTaskPeriodically()
     {
@@ -23,10 +30,12 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        var point = RandomPoint(leftEdge, rightEdge);
-        Instantiate(enemy, point, Quaternion.identity);
+        var point = RandomPointInBounds(spawningArea);
+        var created = Instantiate(enemy, point, Quaternion.identity);
+        var destPoint = RandomPointInBounds(destinationArea);
+        created.MoveToPosition(destPoint, movingToDestinationSpeed);
     }
 
-    private static Vector2 RandomPoint(Vector2 min, Vector2 max) =>
-        new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
+    private static Vector2 RandomPointInBounds(Bounds bounds) =>
+        new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
 }

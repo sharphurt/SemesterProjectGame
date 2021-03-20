@@ -8,7 +8,7 @@ public class Bullet : MonoBehaviour
     public int damage;
 
     [HideInInspector] public Collider2D shooterCollider;
-    [HideInInspector] public string shooterName;
+    [HideInInspector] public string shooterTag;
 
     public GameObject impactEffect;
 
@@ -16,7 +16,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (shooterName == other.gameObject.name || other.GetComponent<Bullet>() != null)
+        if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null)
             return;
         
         var enemy = other.GetComponent<Entity>();

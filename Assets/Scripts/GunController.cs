@@ -27,7 +27,7 @@ public class GunController : MonoBehaviour
         var rb = instantiated.GetComponent<Rigidbody2D>();
         rb.velocity = directionalVector * power;
         instantiated.shooterCollider = shooter.GetComponent<Collider2D>();
-        instantiated.shooterName = shooter.name;
+        instantiated.shooterTag = shooter.tag;
     }
 
     private (Quaternion facingAngle, Vector2 directionalVector) CalculateFacingToTarget(Transform tg)
