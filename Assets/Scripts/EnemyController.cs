@@ -5,7 +5,7 @@ public class EnemyController : Entity
 {
     private Vector3 targetPosition;
     private float movingSpeed;
-
+    
     private void Update()
     {
         if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0))

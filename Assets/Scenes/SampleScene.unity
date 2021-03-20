@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667113415}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
@@ -895,14 +895,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 2464104947051192086, guid: 741caff4e98c32b479ecb56ba942083e, type: 3}
-  spawnPeriod: 6
+  spawnPeriod: 3
   spawningArea:
     m_Center: {x: 0, y: 6, z: 0}
     m_Extent: {x: 2.3, y: 0.1, z: 0}
   destinationArea:
     m_Center: {x: 0, y: 3, z: 0}
     m_Extent: {x: 2.5, y: 0.9, z: 0}
-  movingToDestinationSpeed: 2
+  movingToDestinationSpeed: 1.5
+  livingEnemiesLimit: 10
+  spawningAttempts: 10
 --- !u!4 &1595489664
 Transform:
   m_ObjectHideFlags: 0

@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine;
-using System.Collections;
 
 public class PlayerController : Entity
 {
@@ -23,7 +18,6 @@ public class PlayerController : Entity
     void FixedUpdate()
     {
         var screenEdges = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-
         var boundsHalfSize = boxCollider2D.bounds.size / 2f;
         rb.position = new Vector2(
             Mathf.Clamp(rb.position.x, -screenEdges.x + boundsHalfSize.x, screenEdges.x - boundsHalfSize.x),
@@ -37,6 +31,8 @@ public class PlayerController : Entity
 
     public override void Die()
     {
+        /*
         Debug.Log("Game over!");
+    */
     }
 }
