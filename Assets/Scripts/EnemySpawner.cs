@@ -18,10 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     public uint spawningAttempts;
 
-    void Start()
-    {
-        StartCoroutine(nameof(DoTaskPeriodically));
-    }
+    void Start() => StartCoroutine(nameof(DoTaskPeriodically));
 
     public IEnumerator DoTaskPeriodically()
     {
@@ -51,7 +48,7 @@ public class EnemySpawner : MonoBehaviour
             destPoint = Vector2.zero;
             return false;
         }
-        
+
         for (var attempt = 0; attempt < spawningAttempts; attempt++)
         {
             var dest = FindFreeDestinationPoint(e.GetComponent<BoxCollider2D>().bounds);
@@ -61,7 +58,7 @@ public class EnemySpawner : MonoBehaviour
                 return true;
             }
         }
-        
+
         Debug.LogWarning("It is impossible to spawn an entity - no free space was found");
         destPoint = Vector2.zero;
         return false;

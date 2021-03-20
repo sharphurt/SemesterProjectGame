@@ -7,11 +7,12 @@ public class PlayerController : Entity
     public float acceleration;
     private Rigidbody2D rb;
     private BoxCollider2D boxCollider2D;
-    
-    void Start()
+
+    public override void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        base.Start();
     }
 
 
