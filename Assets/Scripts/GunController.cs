@@ -5,21 +5,47 @@ using UnityEngine;
 public class GunController : MonoBehaviour
 {
     public float shootingPeriod;
-    public Gun gun;
-    public Transform target;
-    
+    public Bullet bullet;
+    public float power;
+
+    private GameObject shooter;
+    private TargetSelector targetSelector;
+    private Transform firePoint;
+
     private void Start()
     {
-        gun.parentCollider = GetComponentInParent<Collider2D>();
-        gun.firePoint = GetComponent<Transform>();
+        shooter = gameObject.transform.parent.gameObject;
+        firePoint = GetComponent<Transform>();
+        targetSelector = GetComponent<TargetSelector>();
         StartCoroutine(nameof(DoTaskPeriodically));
+    }
+
+    private void Shoot(Transform tg)
+    {
+        Debug.Log("Shoot");
+        var (facing, directionalVector) = CalculateFacingToTarget(tg);
+        var instantiated = Instantiate(bullet, firePoint.position, facing);
+        var rb = instantiated.GetComponent<Rigidbody2D>();
+        rb.velocity = directionalVector * power;
+        instantiated.shooterCollider = shooter.GetComponent<Collider2D>();
+        instantiated.shooterName = shooter.name;
+    }
+
+    private (Quaternion facingAngle, Vector2 directionalVector) CalculateFacingToTarget(Transform tg)
+    {
+        var position = firePoint.position;
+        var directionalVector = (tg.position - position).normalized;
+        var angle = Quaternion.LookRotation(directionalVector);
+        angle.x = angle.y = 0;
+        return (angle, directionalVector);
     }
 
     public IEnumerator DoTaskPeriodically()
     {
         while (true)
         {
-            gun.Shoot(target);
+            if (targetSelector.selectedTarget != null)
+                Shoot(targetSelector.selectedTarget.transform);
             yield return new WaitForSeconds(shootingPeriod);
         }
     }
