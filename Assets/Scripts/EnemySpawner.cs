@@ -28,7 +28,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Debug.Log("Spawn");    
         Instantiate(enemy, gameObject.transform);
     }
 }

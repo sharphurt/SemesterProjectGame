@@ -19,8 +19,6 @@ public class Bullet : MonoBehaviour
         if (other.GetInstanceID() == shooterCollider.GetInstanceID() || other.GetComponent<Bullet>() != null)
             return;
         
-        Debug.Log($"{shooterName}'s bullet hits {other.name}");
-        
         var enemy = other.GetComponent<Enemy>();
         if (enemy != null)
             enemy.TakeDamage(damage);

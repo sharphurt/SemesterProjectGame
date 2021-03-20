@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5190916929257096117}
   - component: {fileID: 5190916929257096118}
+  - component: {fileID: 6880907800346930400}
   m_Layer: 0
   m_Name: Gun
   m_TagString: Untagged
@@ -46,6 +47,20 @@ MonoBehaviour:
   shootingPeriod: 4
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   power: 10
+--- !u!114 &6880907800346930400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190916929257096119}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6e338d0b73b986469a579c7ea1f3451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTag: Player
+  selectedTarget: {fileID: 0}
 --- !u!1 &5190916929802328608
 GameObject:
   m_ObjectHideFlags: 0

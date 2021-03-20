@@ -44,8 +44,9 @@ public class GunController : MonoBehaviour
     {
         while (true)
         {
-            if (targetSelector.selectedTarget != null)
-                Shoot(targetSelector.selectedTarget.transform);
+            var target = targetSelector.FindClosestTarget();
+            if (target != null)
+                Shoot(target.transform);
             yield return new WaitForSeconds(shootingPeriod);
         }
     }
