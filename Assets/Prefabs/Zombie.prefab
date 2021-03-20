@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPeriod: 4
+  shootingPeriod: 1
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   power: 10
 --- !u!114 &6880907800346930400
@@ -60,7 +60,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTag: Player
-  selectedTarget: {fileID: 0}
 --- !u!1 &5190916929802328608
 GameObject:
   m_ObjectHideFlags: 0
@@ -74,7 +73,7 @@ GameObject:
   - component: {fileID: 5190916929802328639}
   - component: {fileID: 5190916929802328634}
   - component: {fileID: 5190916929802328635}
-  - component: {fileID: 4926255199669558373}
+  - component: {fileID: 2464104947051192086}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -214,7 +213,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.36, y: 0.53}
   m_EdgeRadius: 0
---- !u!114 &4926255199669558373
+--- !u!114 &2464104947051192086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,7 +222,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5190916929802328608}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f14b8a73d7e246a8aac70d33049bd50f, type: 3}
+  m_Script: {fileID: 11500000, guid: 29d97e498c09473aae2f979cbcc96ed7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100

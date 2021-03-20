@@ -22,7 +22,6 @@ public class GunController : MonoBehaviour
 
     private void Shoot(Transform tg)
     {
-        Debug.Log("Shoot");
         var (facing, directionalVector) = CalculateFacingToTarget(tg);
         var instantiated = Instantiate(bullet, firePoint.position, facing);
         var rb = instantiated.GetComponent<Rigidbody2D>();

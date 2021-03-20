@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Entity
 {
     public Joystick joystick;
 
@@ -33,5 +33,10 @@ public class PlayerController : MonoBehaviour
             joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
 
         rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Game over!");
     }
 }

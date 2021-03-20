@@ -1,21 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = Unity.Mathematics.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemy;
     public float spawnPeriod;
 
-    void Start()
-    {
-        StartCoroutine(nameof(DoTaskPeriodically));
-    }
+    public Vector2 leftEdge;
+    public Vector2 rightEdge;
 
-    void Update()
-    {
-    }
+    void Start() => StartCoroutine(nameof(DoTaskPeriodically));
 
     public IEnumerator DoTaskPeriodically()
     {
@@ -28,6 +23,10 @@ public class EnemySpawner : MonoBehaviour
 
     private void Spawn()
     {
-        Instantiate(enemy, gameObject.transform);
+        var point = RandomPoint(leftEdge, rightEdge);
+        Instantiate(enemy, point, Quaternion.identity);
     }
+
+    private static Vector2 RandomPoint(Vector2 min, Vector2 max) =>
+        new Vector2(Random.Range(min.x, max.x), Random.Range(min.y, max.y));
 }

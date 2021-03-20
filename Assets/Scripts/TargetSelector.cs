@@ -8,16 +8,12 @@ public class TargetSelector : MonoBehaviour
 {
     [SerializeField] private string targetTag;
 
-    private Transform position;
-
-    private void Start()
-    {
-        position = GetComponent<Transform>();
-    }
-    
     public GameObject FindClosestTarget()
     {
         var targets = GameObject.FindGameObjectsWithTag(targetTag);
-        return targets.OrderBy(go => Vector3.Distance(position.position, go.transform.position)).FirstOrDefault();
+        var d = targets    
+            .OrderBy(go => Vector3.Distance(gameObject.transform.position, go.transform.position))
+            .FirstOrDefault();
+        return d;
     }
 }

@@ -16,10 +16,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.GetInstanceID() == shooterCollider.GetInstanceID() || other.GetComponent<Bullet>() != null)
+        if (shooterName == other.gameObject.name || other.GetComponent<Bullet>() != null)
             return;
         
-        var enemy = other.GetComponent<Enemy>();
+        var enemy = other.GetComponent<Entity>();
         if (enemy != null)
             enemy.TakeDamage(damage);
 
