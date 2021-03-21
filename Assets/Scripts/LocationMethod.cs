@@ -1,5 +1,7 @@
-﻿public enum LocationMethod
+﻿using System.Runtime.Serialization;
+
+public enum LocationMethod
 {
-    Random,
-    Specified
+    [EnumMember(Value = "random")] Random,
+    [EnumMember(Value = "specified")] Specified
 }

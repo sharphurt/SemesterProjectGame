@@ -7,9 +7,6 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public Enemy enemy;
-    public float spawnPeriod;
-
     public Bounds spawningArea;
     public Bounds destinationArea;
 
@@ -19,45 +16,55 @@ public class EnemySpawner : MonoBehaviour
     public uint spawningAttempts;
 
     private LevelData levelData;
+    private Dictionary<string, Enemy> prefabs;
+
+    private List<Enemy> currentWave = new List<Enemy>();
 
     void Start()
     {
-        LoadLevelData();
-        Debug.Log(levelData);
-        StartCoroutine(nameof(DoTaskPeriodically));
+        levelData = FindObjectOfType<LevelDataLoader>().levelData;
+        prefabs = PreparePrefabs();
+
+        StartCoroutine(SpawnWave(levelData.wavesData[0]));
     }
 
-    private void LoadLevelData()
+    private Dictionary<string, Enemy> PreparePrefabs() =>
+        levelData.wavesData
+            .SelectMany(s => s.waveElements)
+            .GroupBy(e => e.enemy)
+            .Select(g => g.First().enemy)
+            .ToDictionary(k => k, v => Resources.Load<Enemy>($"Prefabs/Enemies/{v}"));
+
+    private Enemy Spawn(Enemy enemy)
     {
-        if (JsonLevelParser.TryParse($"Assets\\LevelsData\\{gameObject.scene.name}.json", out var data))
-            levelData = data;
-        else
+        var point = RandomUtils.RandomPointInBounds(spawningArea);
+        return Instantiate(enemy, point, Quaternion.identity);
+    }
+
+    private IEnumerator SpawnWave(WaveData waveData)
+    {
+        foreach (var e in waveData.waveElements)
         {
-            Debug.LogError($"Level data isn't specified for level \"{gameObject.scene.name}\"");
-            levelData = new LevelData();
+            var instance = Spawn(prefabs[e.enemy]);
+            instance.OnObjectDestroy += RemoveDestroyedObjectFromWave;
+            currentWave.Add(instance);
+            if (e.locationMethod == LocationMethod.Specified)
+                instance.MoveToPosition(e.position, movingToDestinationSpeed);
+            else
+            {
+                var pos = RandomUtils.RandomPointInBounds(destinationArea);
+                instance.MoveToPosition(pos, movingToDestinationSpeed);
+            }
+
+            yield return new WaitForSeconds(waveData.spawningDelay);
         }
     }
 
-    public IEnumerator DoTaskPeriodically()
-    {
-        while (true)
-        {
-            Spawn();
-            yield return new WaitForSeconds(spawnPeriod);
-        }
-    }
+    private void RemoveDestroyedObjectFromWave(int id) => currentWave.RemoveAll(e => e.GetInstanceID() == id);
 
-    private void Spawn()
-    {
-        var point = RandomPointInBounds(spawningArea);
-        var created = Instantiate(enemy, point, Quaternion.identity);
-
-        if (!TryFindDestinationPoint(created, out var destPoint))
-            Destroy(created.gameObject);
-        else
-            created.MoveToPosition(destPoint, movingToDestinationSpeed);
-    }
-
+  
+    #region Finding random location
+    
     private bool TryFindDestinationPoint(Component e, out Vector2 destPoint)
     {
         if (CountEnemiesOnScene() > livingEnemiesLimit)
@@ -67,7 +74,9 @@ public class EnemySpawner : MonoBehaviour
             return false;
         }
 
-        for (var attempt = 0; attempt < spawningAttempts; attempt++)
+        for (var attempt = 0;
+            attempt < spawningAttempts;
+            attempt++)
         {
             var dest = FindFreeDestinationPoint(e.GetComponent<BoxCollider2D>().bounds);
             if (dest != Vector2.zero)
@@ -84,9 +93,8 @@ public class EnemySpawner : MonoBehaviour
 
     private Vector2 FindFreeDestinationPoint(Bounds bounds)
     {
-        var destPoint = RandomPointInBounds(destinationArea);
+        var destPoint = RandomUtils.RandomPointInBounds(destinationArea);
         bounds.center = destPoint;
-        DrawBounds(bounds, CheckIntersectsWithLivingEnemies(bounds) ? Color.red : Color.green, 3f);
         return !CheckIntersectsWithLivingEnemies(bounds) ? destPoint : Vector2.zero;
     }
 
@@ -96,40 +104,7 @@ public class EnemySpawner : MonoBehaviour
             .Where(e => e.GetComponent<BoxCollider2D>().bounds != bounds)
             .Any(spawnedEnemy => spawnedEnemy.GetComponent<BoxCollider2D>().bounds.Intersects(bounds));
     }
-
-    private static Vector2 RandomPointInBounds(Bounds bounds) =>
-        new Vector2(Random.Range(bounds.min.x, bounds.max.x), Random.Range(bounds.min.y, bounds.max.y));
-
+    
     private int CountEnemiesOnScene() => GameObject.FindGameObjectsWithTag("Enemy").Length;
-
-    public static void DrawBounds(Bounds b, Color color, float delay = 0)
-    {
-        // bottom
-        var p1 = new Vector3(b.min.x, b.min.y, b.min.z);
-        var p2 = new Vector3(b.max.x, b.min.y, b.min.z);
-        var p3 = new Vector3(b.max.x, b.min.y, b.max.z);
-        var p4 = new Vector3(b.min.x, b.min.y, b.max.z);
-
-        Debug.DrawLine(p1, p2, color, delay);
-        Debug.DrawLine(p2, p3, color, delay);
-        Debug.DrawLine(p3, p4, color, delay);
-        Debug.DrawLine(p4, p1, color, delay);
-
-        // top
-        var p5 = new Vector3(b.min.x, b.max.y, b.min.z);
-        var p6 = new Vector3(b.max.x, b.max.y, b.min.z);
-        var p7 = new Vector3(b.max.x, b.max.y, b.max.z);
-        var p8 = new Vector3(b.min.x, b.max.y, b.max.z);
-
-        Debug.DrawLine(p5, p6, color, delay);
-        Debug.DrawLine(p6, p7, color, delay);
-        Debug.DrawLine(p7, p8, color, delay);
-        Debug.DrawLine(p8, p5, color, delay);
-
-        // sides
-        Debug.DrawLine(p1, p5, color, delay);
-        Debug.DrawLine(p2, p6, color, delay);
-        Debug.DrawLine(p3, p7, color, delay);
-        Debug.DrawLine(p4, p8, color, delay);
-    }
+    #endregion
 }
