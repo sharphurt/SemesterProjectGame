@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class EnemyController : Entity
+public class Enemy : Entity
 {
     private Vector3 targetPosition;
     private float movingSpeed;

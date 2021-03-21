@@ -1,0 +1,33 @@
+﻿{
+  "wavesData": [
+    {
+      "repeats": 1,
+      "waveElements": [
+        {
+          "enemy": "Zombie",
+          "locationMethod": 0
+        },
+        {
+          "enemy": "Zombie",
+          "locationMethod": 1,
+          "position": {
+            "x": 0.0,
+            "y": 3.0
+          }
+        },
+        {
+          "enemy": "Zombie",
+          "locationMethod": 0
+        },
+        {
+          "enemy": "Zombie",
+          "locationMethod": 1,
+          "position": {
+            "x": 2.0,
+            "y": 4.0
+          }
+        }
+      ]
+    }
+  ]
+}
