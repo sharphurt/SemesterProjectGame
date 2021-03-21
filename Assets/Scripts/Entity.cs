@@ -7,6 +7,9 @@ public class Entity : MonoBehaviour
     public int maxHealth = 100;
     public HealthBar healthBar;
 
+    public delegate void ObjectDestroyHandler(int gameObject);
+    public event ObjectDestroyHandler OnObjectDestroy;
+
     public virtual void Start()
     {
         healthBar.SetHealthBar(100, 100, true);
@@ -24,5 +27,6 @@ public class Entity : MonoBehaviour
     public virtual void Die()
     {
         Destroy(gameObject);
+        OnObjectDestroy?.Invoke(GetInstanceID());
     }
 }

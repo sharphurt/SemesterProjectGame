@@ -1,7 +1,8 @@
-﻿{
+﻿﻿{
   "wavesData": [
     {
       "repeats": 1,
+      "spawningDelay": 2.0,
       "waveElements": [
         {
           "enemy": "Zombie",
