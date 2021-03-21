@@ -268,7 +268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPeriod: 0.5
-  bulletController: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
+  bulletController: {fileID: 6952150696209495325, guid: aa8035f13c5c193479fb0b380ea8e934, type: 3}
   power: 10
 --- !u!114 &667113418
 MonoBehaviour:
