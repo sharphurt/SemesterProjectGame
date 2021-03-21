@@ -1,32 +1,32 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Entities;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+namespace Controllers
 {
-    public int damage;
-
-    [HideInInspector] public Collider2D shooterCollider;
-    [HideInInspector] public string shooterTag;
-
-    public GameObject impactEffect;
-
-    private void OnBecameInvisible() => Destroy(gameObject);
-
-    private void OnTriggerEnter2D(Collider2D other)
+    public class BulletController : MonoBehaviour
     {
-        if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null)
-            return;
+        public int damage;
+
+        [HideInInspector] public Collider2D shooterCollider;
+        [HideInInspector] public string shooterTag;
+
+        public GameObject impactEffect;
+
+        private void OnBecameInvisible() => Destroy(gameObject);
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<BulletController>() != null)
+                return;
         
-        var enemy = other.GetComponent<Entity>();
-        if (enemy != null)
-            enemy.TakeDamage(damage);
+            var enemy = other.GetComponent<Entity>();
+            if (enemy != null)
+                enemy.TakeDamage(damage);
 
-        if (impactEffect != null)
-            Instantiate(impactEffect, transform.position, transform.rotation);
+            if (impactEffect != null)
+                Instantiate(impactEffect, transform.position, transform.rotation);
 
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

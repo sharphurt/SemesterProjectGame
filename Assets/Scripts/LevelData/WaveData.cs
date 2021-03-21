@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Drawing;
 using UnityEngine;
 
-
 [Serializable]
 public class WaveData
 {

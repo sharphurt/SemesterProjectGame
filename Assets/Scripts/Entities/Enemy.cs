@@ -1,20 +1,22 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Enemy : Entity
+namespace Entities
 {
-    private Vector3 targetPosition;
-    private float movingSpeed;
+    public class Enemy : Entity
+    {
+        private Vector3 targetPosition;
+        private float movingSpeed;
     
-    private void Update()
-    {
-        if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0))
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movingSpeed);
-    }
+        private void Update()
+        {
+            if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0))
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * movingSpeed);
+        }
 
-    public void MoveToPosition(Vector2 targetPos, float speed)
-    {
-        targetPosition = targetPos;
-        movingSpeed = speed;
+        public void MoveToPosition(Vector2 targetPos, float speed)
+        {
+            targetPosition = targetPos;
+            movingSpeed = speed;
+        }
     }
 }
