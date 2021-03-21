@@ -7,7 +7,7 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public EnemyController enemy;
+    public Enemy enemy;
     public float spawnPeriod;
 
     public Bounds spawningArea;
@@ -18,7 +18,25 @@ public class EnemySpawner : MonoBehaviour
 
     public uint spawningAttempts;
 
-    void Start() => StartCoroutine(nameof(DoTaskPeriodically));
+    private LevelData levelData;
+
+    void Start()
+    {
+        LoadLevelData();
+        Debug.Log(levelData);
+        StartCoroutine(nameof(DoTaskPeriodically));
+    }
+
+    private void LoadLevelData()
+    {
+        if (JsonLevelParser.TryParse($"Assets\\LevelsData\\{gameObject.scene.name}.json", out var data))
+            levelData = data;
+        else
+        {
+            Debug.LogError($"Level data isn't specified for level \"{gameObject.scene.name}\"");
+            levelData = new LevelData();
+        }
+    }
 
     public IEnumerator DoTaskPeriodically()
     {
