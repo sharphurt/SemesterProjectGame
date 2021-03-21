@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootingPeriod: 1
-  bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
+  bulletController: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   power: 10
 --- !u!114 &6880907800346930400
 MonoBehaviour:
@@ -90,7 +90,7 @@ Transform:
   m_GameObject: {fileID: 5190916929802328608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -2.3, y: 4.2, z: 0}
-  m_LocalScale: {x: 2.1168, y: 2.1168, z: 2.1168}
+  m_LocalScale: {x: 1.4002632, y: 1.4002632, z: 1.4002632}
   m_Children:
   - {fileID: 5190916929257096117}
   - {fileID: 8524351398951747145}
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  healthBar: {fileID: 9140820055143776816}
+  healthBarController: {fileID: 9140820055143776816}
 --- !u!1001 &1376877078146728055
 PrefabInstance:
   m_ObjectHideFlags: 0
