@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Entities;
-using LevelDataScripts;
+using LevelData;
 using UnityEngine;
 
-namespace SpawnScripts
+namespace Spawning
 {
     public class EnemySpawner : MonoBehaviour
     {
         public Bounds spawningArea;
-        public Bounds destinationArea;
+        
+        [HideInInspector] public Bounds destinationArea;
+        [HideInInspector] public uint livingEnemiesLimit;
+        [HideInInspector] public uint spawningAttempts;
 
         public float movingToDestinationSpeed;
-        public uint livingEnemiesLimit;
 
-        public uint spawningAttempts;
-
-        private LevelData levelData;
+        private LevelData.LevelData levelData;
         private Dictionary<string, Enemy> prefabs;
 
         private readonly List<Enemy> currentWave = new List<Enemy>();
@@ -44,13 +44,13 @@ namespace SpawnScripts
             {
                 for (var waveRepeat = 0; waveRepeat < wave.repeats; waveRepeat++)
                 {
-                    yield return SpawnWave(wave);
-                    yield return new WaitUntil(() => currentWave.Count == 0);
+                    yield return SpawnWaveCoroutine(wave);
+                    yield return new WaitWhile(() => currentWave.Any());
                 }
             }
         }
 
-        private IEnumerator SpawnWave(WaveData waveData)
+        private IEnumerator SpawnWaveCoroutine(WaveData waveData)
         {
             foreach (var e in waveData.waveElements)
             {

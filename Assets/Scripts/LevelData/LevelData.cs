@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LevelDataScripts
+namespace LevelData
 {
     [Serializable]
     public class LevelData

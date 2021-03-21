@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LevelDataScripts
+namespace LevelData
 {
     public class LevelDataLoader : MonoBehaviour
     {

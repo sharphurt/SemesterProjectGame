@@ -2,27 +2,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthBarController : MonoBehaviour
+namespace Controllers
 {
-    public Image healthBar;
-    private int currentValue;
-    private int reachingHealth;
-    private int maxHealth;
-
-    private void Update()
+    public class HealthBarController : MonoBehaviour
     {
-        if (currentValue != reachingHealth)
+        public Image healthBar;
+        private int currentValue;
+        private int reachingHealth;
+        private int maxHealth;
+
+        private void Update()
         {
-            currentValue = (int) Math.Round(Mathf.Lerp(currentValue, reachingHealth, 1.5f * Time.deltaTime));
-            healthBar.fillAmount = 1f / maxHealth * currentValue;
+            if (currentValue != reachingHealth)
+            {
+                currentValue = (int) Math.Round(Mathf.Lerp(currentValue, reachingHealth, 1.5f * Time.deltaTime));
+                healthBar.fillAmount = 1f / maxHealth * currentValue;
+            }
         }
-    }
 
-    public void SetHealthBar(int value, int max, bool isInstantly)
-    {
-        reachingHealth = value;
-        maxHealth = max;
-        if (isInstantly)
-            currentValue = reachingHealth;
+        public void SetHealthBar(int value, int max, bool isInstantly)
+        {
+            reachingHealth = value;
+            maxHealth = max;
+            if (isInstantly)
+                currentValue = reachingHealth;
+        }
     }
 }
