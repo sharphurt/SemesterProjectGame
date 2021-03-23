@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,16 +15,11 @@ namespace Controllers
         private int reachingHealth;
         private int maxHealth;
 
-        private void Start()
-        {
-            slider = GetComponent<Slider>();
-        }
-
         private void Update()
         {
             if (currentValue != reachingHealth)
             {
-                currentValue = (int) Math.Round(Mathf.Lerp(currentValue, reachingHealth, 1.5f * Time.deltaTime));
+                currentValue = (int) Mathf.Lerp(currentValue, reachingHealth, 0.1f * Time.deltaTime);
                 slider.value = 1f / maxHealth * currentValue;
                 healthBar.color = gradient.Evaluate(slider.normalizedValue);
             }
@@ -31,12 +27,15 @@ namespace Controllers
 
         public void SetHealthBar(int value, int max, bool isInstantly)
         {
+            slider ??= GetComponent<Slider>();
+
             reachingHealth = value;
             maxHealth = max;
             if (isInstantly)
             {
                 currentValue = reachingHealth;
                 healthBar.color = gradient.Evaluate(1f / maxHealth * currentValue);
+                slider.value = 1f / maxHealth * currentValue;
             }
         }
     }

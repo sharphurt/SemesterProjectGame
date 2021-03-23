@@ -10,7 +10,7 @@ namespace Spawning
     public class EnemySpawner : MonoBehaviour
     {
         public Bounds spawningArea;
-        
+
         [HideInInspector] public Bounds destinationArea;
         [HideInInspector] public uint livingEnemiesLimit;
         [HideInInspector] public uint spawningAttempts;
@@ -54,6 +54,8 @@ namespace Spawning
         {
             foreach (var e in waveData.waveElements)
             {
+                yield return new WaitForSeconds(e.spawningDelay);
+                
                 var instance = Spawn(prefabs[e.enemy]);
                 if (e.locationMethod == LocationMethod.Specified)
                     instance.MoveToPosition(e.position, movingToDestinationSpeed);
@@ -62,8 +64,6 @@ namespace Spawning
                     var pos = RandomUtils.RandomPointInBounds(destinationArea);
                     instance.MoveToPosition(pos, movingToDestinationSpeed);
                 }
-
-                yield return new WaitForSeconds(waveData.spawningDelay);
             }
         }
 
@@ -72,7 +72,6 @@ namespace Spawning
             var point = RandomUtils.RandomPointInBounds(spawningArea);
             var instance = Instantiate(enemy, point, Quaternion.identity);
             instance.OnObjectDestroy += id => currentWave.RemoveAll(e => e.GetInstanceID() == id);
-            ;
             currentWave.Add(instance);
             return instance;
         }

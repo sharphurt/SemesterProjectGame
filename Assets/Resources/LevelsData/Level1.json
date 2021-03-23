@@ -1,7 +1,7 @@
 ﻿{
   "wavesData": [
     {
-      "repeats": 3,
+      "repeats": 1,
       "spawningDelay": 0.5,
       "waveElements": [
         {
@@ -33,6 +33,20 @@
           "locationMethod": 1,
           "position": {
             "x": 2.0,
+            "y": 3.8
+          }
+        }
+      ]
+    },
+    {
+      "repeats": 1,
+      "spawningDelay": 0,
+      "waveElements": [
+        {
+          "enemy": "8TrapZombie",
+          "locationMethod": 1,
+          "position": {
+            "x": 0.0,
             "y": 3.8
           }
         }

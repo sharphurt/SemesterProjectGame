@@ -9,5 +9,6 @@ namespace LevelData
         public string enemy;
         public LocationMethod locationMethod;
         public Vector2 position;
+        public float spawningDelay;
     }
 }

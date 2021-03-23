@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using LevelData;
+using UnityEngine;
 
 namespace Entities
 {
@@ -6,7 +7,7 @@ namespace Entities
     {
         private Vector3 targetPosition;
         private float movingSpeed;
-    
+
         private void Update()
         {
             if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0))

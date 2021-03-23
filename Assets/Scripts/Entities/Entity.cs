@@ -1,4 +1,6 @@
-﻿using Controllers;
+﻿using System;
+using System.Collections;
+using Controllers;
 using UnityEngine;
 
 namespace Entities
@@ -10,6 +12,7 @@ namespace Entities
         public HealthBarController healthBarController;
 
         public delegate void ObjectDestroyHandler(int gameObject);
+
         public event ObjectDestroyHandler OnObjectDestroy;
 
         public virtual void Start()
@@ -21,7 +24,6 @@ namespace Entities
         {
             health -= damage;
             healthBarController.SetHealthBar(health, maxHealth, false);
-        
             if (health <= 0)
                 Die();
         }

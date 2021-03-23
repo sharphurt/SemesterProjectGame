@@ -7,7 +7,6 @@ namespace LevelData
     public class WaveData
     {
         public uint repeats;
-        public float spawningDelay;
         public List<WaveElement> waveElements;
     }
 }

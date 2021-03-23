@@ -41,6 +41,21 @@ TextureImporter:
   - first:
       213: -9021007482488981686
     second: blue_bullets_25
+  - first:
+      213: 1580360619259781592
+    second: blue_bullets_4
+  - first:
+      213: 2603008338355369445
+    second: blue_bullets_9
+  - first:
+      213: -3937687380427552332
+    second: blue_bullets_10
+  - first:
+      213: -4528675327010772932
+    second: blue_bullets_13
+  - first:
+      213: -7446829717770940607
+    second: blue_bullets_14
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -145,10 +160,10 @@ TextureImporter:
       name: blue_bullets_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 426
-        width: 8
-        height: 19
+        x: 179
+        y: 402
+        width: 20
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,10 +181,10 @@ TextureImporter:
       name: blue_bullets_1
       rect:
         serializedVersion: 2
-        x: 124
-        y: 424
-        width: 17
-        height: 22
+        x: 303
+        y: 423
+        width: 22
+        height: 59
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,97 +199,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blue_bullets_2
-      rect:
-        serializedVersion: 2
-        x: 249
-        y: 424
-        width: 28
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1caaa8b78e4369af0800000000000000
-      internalID: -390066144611226943
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blue_bullets_3
-      rect:
-        serializedVersion: 2
-        x: 374
-        y: 425
-        width: 35
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 52f1db50e78f2c150800000000000000
-      internalID: 5891544482699878181
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blue_bullets_5
-      rect:
-        serializedVersion: 2
-        x: 2
-        y: 301
-        width: 44
-        height: 21
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d78528570c7e6a0f0800000000000000
-      internalID: -1105941844681664387
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blue_bullets_6
-      rect:
-        serializedVersion: 2
-        x: 132
-        y: 300
-        width: 45
-        height: 23
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5cb5369f770b502c0800000000000000
-      internalID: -4465969426136343611
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: blue_bullets_8
       rect:
         serializedVersion: 2
-        x: 253
-        y: 301
-        width: 61
-        height: 22
+        x: 177
+        y: 274
+        width: 22
+        height: 40
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,34 +220,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blue_bullets_12
-      rect:
-        serializedVersion: 2
-        x: 376
-        y: 301
-        width: 72
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1dc08ee93b0c9b9b0800000000000000
-      internalID: -5063804428303725359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: blue_bullets_16
       rect:
         serializedVersion: 2
-        x: 15
-        y: 175
-        width: 69
-        height: 22
+        x: 54
+        y: 124
+        width: 22
+        height: 17
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,10 +244,10 @@ TextureImporter:
       name: blue_bullets_18
       rect:
         serializedVersion: 2
-        x: 145
-        y: 176
-        width: 71
-        height: 22
+        x: 427
+        y: 72
+        width: 23
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,10 +265,10 @@ TextureImporter:
       name: blue_bullets_19
       rect:
         serializedVersion: 2
-        x: 281
-        y: 174
-        width: 69
-        height: 23
+        x: 303
+        y: 33
+        width: 22
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,10 +286,10 @@ TextureImporter:
       name: blue_bullets_22
       rect:
         serializedVersion: 2
-        x: 409
-        y: 175
-        width: 73
-        height: 22
+        x: 178
+        y: 1
+        width: 21
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,10 +307,10 @@ TextureImporter:
       name: blue_bullets_25
       rect:
         serializedVersion: 2
-        x: 44
-        y: 50
-        width: 72
-        height: 23
+        x: 55
+        y: 0
+        width: 19
+        height: 8
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -410,6 +320,111 @@ TextureImporter:
       bones: []
       spriteID: a477a127d71fec280800000000000000
       internalID: -9021007482488981686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_bullets_4
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 374
+        width: 21
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d1eeff2c919ee510800000000000000
+      internalID: 1580360619259781592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_bullets_9
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 281
+        width: 23
+        height: 69
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e53d0bda4ebf1420800000000000000
+      internalID: 2603008338355369445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_bullets_10
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 249
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b9c315b0368a59c0800000000000000
+      internalID: -3937687380427552332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_bullets_13
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 132
+        width: 23
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c386276b8c9e621c0800000000000000
+      internalID: -4528675327010772932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue_bullets_14
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 151
+        width: 22
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14fc071a3db87a890800000000000000
+      internalID: -7446829717770940607
       vertices: []
       indices: 
       edges: []

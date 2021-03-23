@@ -144,9 +144,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPeriod: 1
-  bulletController: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
-  power: 10
+  bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
+  speed: 3
+  startDelay: 3
+  shootingPeriod: 2
+  isInfinityShooting: 1
+  shootsCount: 0
+  shooterCollider: {fileID: 0}
+  shooterTag: 
 --- !u!114 &6880907800346930400
 MonoBehaviour:
   m_ObjectHideFlags: 0

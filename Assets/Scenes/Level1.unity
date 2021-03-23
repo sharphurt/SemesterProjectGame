@@ -264,13 +264,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667113415}
-  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 5.54, z: 0}
   m_LocalScale: {x: 6.7533417, y: 6.7533417, z: 0}
   m_Children: []
   m_Father: {fileID: 1198084380}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &667113417
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,9 +283,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 6952150696209495325, guid: aa8035f13c5c193479fb0b380ea8e934, type: 3}
+  speed: 3
+  startDelay: 0
   shootingPeriod: 0.5
-  bulletController: {fileID: 6952150696209495325, guid: aa8035f13c5c193479fb0b380ea8e934, type: 3}
-  power: 10
+  isInfinityShooting: 1
+  shootsCount: 0
+  shooterCollider: {fileID: 0}
+  shooterTag: 
 --- !u!114 &667113418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +321,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1037,7 +1042,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244737330078828676, guid: f70cfb2d818f63c47b9a988a400d1d63, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3244737330078828676, guid: f70cfb2d818f63c47b9a988a400d1d63, type: 3}
       propertyPath: m_AnchorMax.x
