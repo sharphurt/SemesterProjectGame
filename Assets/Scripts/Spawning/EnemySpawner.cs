@@ -27,11 +27,11 @@ namespace Spawning
             levelData = FindObjectOfType<LevelDataLoader>().levelData;
             prefabs = PreparePrefabs();
 
-            StartCoroutine(SpawnWavesCoroutine(levelData.wavesData));
+            StartCoroutine(SpawnWavesCoroutine(levelData.waves));
         }
 
         private Dictionary<string, Enemy> PreparePrefabs() =>
-            levelData.wavesData
+            levelData.waves
                 .SelectMany(s => s.waveElements)
                 .GroupBy(e => e.enemy)
                 .Select(g => g.First().enemy)

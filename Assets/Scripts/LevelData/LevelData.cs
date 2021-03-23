@@ -7,7 +7,7 @@ namespace LevelData
     [Serializable]
     public class LevelData
     {
-        public List<WaveData> wavesData;
+        public List<WaveData> waves;
 
         public override string ToString() => JsonUtility.ToJson(this);
     }

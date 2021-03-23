@@ -1,8 +1,7 @@
 ﻿{
-  "wavesData": [
+  "waves": [
     {
       "repeats": 1,
-      "spawningDelay": 0.5,
       "waveElements": [
         {
           "enemy": "Zombie",
@@ -10,7 +9,8 @@
           "position": {
             "x": -2.0,
             "y": 1.7
-          }
+          },
+          "spawningDelay": 1
         },
         {
           "enemy": "Zombie",
@@ -18,7 +18,8 @@
           "position": {
             "x": 2.0,
             "y": 1.7
-          }
+          },
+          "spawningDelay": 2
         },
         {
           "enemy": "Zombie",
@@ -26,7 +27,8 @@
           "position": {
             "x": -2.0,
             "y": 3.8
-          }
+          },
+          "spawningDelay": 3
         },
         {
           "enemy": "Zombie",
@@ -34,7 +36,8 @@
           "position": {
             "x": 2.0,
             "y": 3.8
-          }
+          },
+          "spawningDelay": 4
         }
       ]
     },
