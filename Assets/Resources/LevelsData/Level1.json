@@ -1,11 +1,22 @@
 ﻿{
-    "delayBeforeLevelEnd": 3,
+    "levelEnd": {
+        "delay": 3,
+        "prefab": "Castle",
+        "spawnPosition": {
+            "x": 0.0,
+            "y": 10
+        },
+        "targetPosition": {
+            "x": 0.0,
+            "y": 2.0
+        }
+    },
     "waves": [
         {
             "repeats": 1,
             "waveElements": [
                 {
-                    "enemy": "Zombie",
+                    "prefab": "Zombie",
                     "locationMethod": 1,
                     "position": {
                         "x": -2.0,
@@ -14,7 +25,7 @@
                     "spawningDelay": 1
                 },
                 {
-                    "enemy": "Zombie",
+                    "prefab": "Zombie",
                     "locationMethod": 1,
                     "position": {
                         "x": 2.0,
@@ -23,7 +34,7 @@
                     "spawningDelay": 2
                 },
                 {
-                    "enemy": "Zombie",
+                    "prefab": "Zombie",
                     "locationMethod": 1,
                     "position": {
                         "x": -2.0,
@@ -32,7 +43,7 @@
                     "spawningDelay": 3
                 },
                 {
-                    "enemy": "Zombie",
+                    "prefab": "Zombie",
                     "locationMethod": 1,
                     "position": {
                         "x": 2.0,
@@ -47,7 +58,7 @@
             "spawningDelay": 0,
             "waveElements": [
                 {
-                    "enemy": "8TrapZombie",
+                    "prefab": "8TrapZombie",
                     "locationMethod": 1,
                     "position": {
                         "x": 0.0,
