@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   speed: 3
-  startDelay: 3
+  startDelay: 1
   shootingPeriod: 2
   isInfinityShooting: 1
   shootsCount: 0

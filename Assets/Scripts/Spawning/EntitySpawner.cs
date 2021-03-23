@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Controllers;
 using Entities;
 using LevelData;
 using UnityEngine;
@@ -17,26 +18,16 @@ namespace Spawning
 
         public float movingToDestinationSpeed;
 
-        private LevelData.LevelData levelData;
-        private Dictionary<string, Enemy> prefabs;
-
+        public delegate void OnWaves
+        
+        private GameManager gameManager;
         private readonly List<Enemy> currentWave = new List<Enemy>();
-
+        
         void Start()
         {
-            levelData = FindObjectOfType<LevelDataLoader>().levelData;
-            prefabs = PreparePrefabs();
-
-            StartCoroutine(SpawnWavesCoroutine(levelData.waves));
+            gameManager = FindObjectOfType<GameManager>();
+            StartCoroutine(SpawnWavesCoroutine(gameManager.LevelData.waves));
         }
-
-        private Dictionary<string, Enemy> PreparePrefabs() =>
-            levelData.waves
-                .SelectMany(s => s.waveElements)
-                .GroupBy(e => e.enemy)
-                .Select(g => g.First().enemy)
-                .ToDictionary(k => k, v => Resources.Load<Enemy>($"Prefabs/Enemies/{v}"));
-
 
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
         {
@@ -55,8 +46,8 @@ namespace Spawning
             foreach (var e in waveData.waveElements)
             {
                 yield return new WaitForSeconds(e.spawningDelay);
-                
-                var instance = Spawn(prefabs[e.enemy]);
+
+                var instance = Spawn(gameManager.Prefabs[e.enemy]);
                 if (e.locationMethod == LocationMethod.Specified)
                     instance.MoveToPosition(e.position, movingToDestinationSpeed);
                 else

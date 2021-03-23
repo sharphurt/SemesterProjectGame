@@ -1,59 +1,60 @@
 ﻿{
-  "waves": [
-    {
-      "repeats": 1,
-      "waveElements": [
+    "delayBeforeLevelEnd": 3,
+    "waves": [
         {
-          "enemy": "Zombie",
-          "locationMethod": 1,
-          "position": {
-            "x": -2.0,
-            "y": 1.7
-          },
-          "spawningDelay": 1
+            "repeats": 1,
+            "waveElements": [
+                {
+                    "enemy": "Zombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -2.0,
+                        "y": 1.7
+                    },
+                    "spawningDelay": 1
+                },
+                {
+                    "enemy": "Zombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 2.0,
+                        "y": 1.7
+                    },
+                    "spawningDelay": 2
+                },
+                {
+                    "enemy": "Zombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -2.0,
+                        "y": 3.8
+                    },
+                    "spawningDelay": 3
+                },
+                {
+                    "enemy": "Zombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 2.0,
+                        "y": 3.8
+                    },
+                    "spawningDelay": 4
+                }
+            ]
         },
         {
-          "enemy": "Zombie",
-          "locationMethod": 1,
-          "position": {
-            "x": 2.0,
-            "y": 1.7
-          },
-          "spawningDelay": 2
-        },
-        {
-          "enemy": "Zombie",
-          "locationMethod": 1,
-          "position": {
-            "x": -2.0,
-            "y": 3.8
-          },
-          "spawningDelay": 3
-        },
-        {
-          "enemy": "Zombie",
-          "locationMethod": 1,
-          "position": {
-            "x": 2.0,
-            "y": 3.8
-          },
-          "spawningDelay": 4
+            "repeats": 1,
+            "spawningDelay": 0,
+            "waveElements": [
+                {
+                    "enemy": "8TrapZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.0,
+                        "y": 3.8
+                    }
+                }
+            ]
         }
-      ]
-    },
-    {
-      "repeats": 1,
-      "spawningDelay": 0,
-      "waveElements": [
-        {
-          "enemy": "8TrapZombie",
-          "locationMethod": 1,
-          "position": {
-            "x": 0.0,
-            "y": 3.8
-          }
-        }
-      ]
-    }
-  ]
+    ]
 }

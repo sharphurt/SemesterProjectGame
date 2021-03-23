@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace Entities
 {
@@ -11,6 +10,11 @@ namespace Entities
         private Rigidbody2D rb;
         private BoxCollider2D boxCollider2D;
 
+        public delegate void PlayerDeathHandler(string killer);
+
+        public event PlayerDeathHandler OnPlayerDeath;
+        
+        
         public override void Start()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -35,7 +39,7 @@ namespace Entities
         public override void Die()
         {
             base.Die();
-            SceneManager.LoadScene("MainMenu");
+            OnPlayerDeath?.Invoke("");
         }
     }
 }

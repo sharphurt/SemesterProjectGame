@@ -17,9 +17,8 @@ namespace Controllers
 
         private void Update()
         {
-            if (Math.Abs(currentValue - reachingHealth) > 0.01)
+            if (Math.Abs(currentValue - reachingHealth) > 0.0001)
             {
-                Debug.Log(currentValue);
                 currentValue = Mathf.Lerp(currentValue, reachingHealth, 10 * Time.deltaTime);
                 slider.value = 1f / maxHealth * currentValue;
                 healthBar.color = gradient.Evaluate(slider.normalizedValue);
