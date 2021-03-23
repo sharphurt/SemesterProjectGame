@@ -1,52 +1,49 @@
-using System.Collections;
+﻿using System.Collections;
+using System.Diagnostics;
+using Entities;
 using UnityEngine;
+using UnityEditor;
+using Utils;
 
 namespace Controllers
 {
-    public class GunController : MonoBehaviour
+    public abstract class GunController : MonoBehaviour
     {
+        public Projectile bullet;
+        public float speed;
+        public float startDelay;
         public float shootingPeriod;
-        public BulletController bulletController;
-        public float power;
+        public bool isInfinityShooting;
 
-        private GameObject shooter;
-        private TargetSelectorController targetSelectorController;
-        private Transform firePoint;
+        [ConditionalHide("isInfinityShooting", true)]
+        public uint shootsCount;
+        
+        [HideInInspector] public Collider2D shooterCollider;
+        [HideInInspector] public string shooterTag;
 
-        private void Start()
+        public virtual void Start()
         {
-            shooter = gameObject.transform.parent.gameObject;
-            firePoint = GetComponent<Transform>();
-            targetSelectorController = GetComponent<TargetSelectorController>();
-            StartCoroutine(nameof(DoTaskPeriodically));
+            var parent = gameObject.transform.parent.gameObject;
+            shooterCollider = parent.GetComponent<Collider2D>();
+            shooterTag = parent.tag;
+            StartCoroutine(PeriodicallyShootCoroutine(isInfinityShooting, shootsCount));
         }
 
-        private void Shoot(Transform tg)
-        {
-            var (facing, directionalVector) = CalculateFacingToTarget(tg);
-            var instantiated = Instantiate(bulletController, firePoint.position, facing);
-            var rb = instantiated.GetComponent<Rigidbody2D>();
-            rb.velocity = directionalVector * power;
-            instantiated.shooterCollider = shooter.GetComponent<Collider2D>();
-            instantiated.shooterTag = shooter.tag;
-        }
+        public abstract void Shoot();
 
-        private (Quaternion facingAngle, Vector2 directionalVector) CalculateFacingToTarget(Transform tg)
+        private IEnumerator PeriodicallyShootCoroutine(bool isInf, uint repeats)
         {
-            var position = firePoint.position;
-            var directionalVector = (tg.position - position).normalized;
-            var angle = Quaternion.LookRotation(directionalVector);
-            angle.x = angle.y = 0;
-            return (angle, directionalVector);
-        }
+            yield return new WaitForSeconds(startDelay);
+            if (isInf)
+                while (true)
+                {
+                    Shoot();
+                    yield return new WaitForSeconds(shootingPeriod);
+                }
 
-        public IEnumerator DoTaskPeriodically()
-        {
-            while (true)
+            for (var i = 0; i < repeats; i++)
             {
-                var target = targetSelectorController.FindClosestTarget();
-                if (target != null)
-                    Shoot(target.transform);
+                Shoot();
                 yield return new WaitForSeconds(shootingPeriod);
             }
         }

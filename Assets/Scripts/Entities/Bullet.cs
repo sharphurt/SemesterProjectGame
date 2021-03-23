@@ -1,24 +1,14 @@
-using Entities;
 using UnityEngine;
 
-namespace Controllers
+namespace Entities
 {
-    public class BulletController : MonoBehaviour
+    public class Bullet : Projectile
     {
-        public int damage;
-
-        [HideInInspector] public Collider2D shooterCollider;
-        [HideInInspector] public string shooterTag;
-
-        public GameObject impactEffect;
-
-        private void OnBecameInvisible() => Destroy(gameObject);
-
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<BulletController>() != null)
+            if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null)
                 return;
-        
+
             var enemy = other.GetComponent<Entity>();
             if (enemy != null)
                 enemy.TakeDamage(damage);
