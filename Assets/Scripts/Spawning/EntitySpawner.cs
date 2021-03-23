@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace Spawning
 {
-    public class EnemySpawner : MonoBehaviour
+    public class EntitySpawner : MonoBehaviour
     {
         public Bounds spawningArea;
 
@@ -18,17 +18,14 @@ namespace Spawning
 
         public float movingToDestinationSpeed;
 
-        public delegate void OnWaves
-        
-        private GameManager gameManager;
-        private readonly List<Enemy> currentWave = new List<Enemy>();
-        
-        void Start()
-        {
-            gameManager = FindObjectOfType<GameManager>();
-            StartCoroutine(SpawnWavesCoroutine(gameManager.LevelData.waves));
-        }
+        public delegate void WavesAreOverHandler();
 
+        public event WavesAreOverHandler OnWavesOver;
+
+        private readonly List<Enemy> currentWave = new List<Enemy>();
+
+        public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
+        
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
         {
             foreach (var wave in waves)
@@ -39,6 +36,8 @@ namespace Spawning
                     yield return new WaitWhile(() => currentWave.Any());
                 }
             }
+
+            OnWavesOver?.Invoke();
         }
 
         private IEnumerator SpawnWaveCoroutine(WaveData waveData)
@@ -47,13 +46,13 @@ namespace Spawning
             {
                 yield return new WaitForSeconds(e.spawningDelay);
 
-                var instance = Spawn(gameManager.Prefabs[e.enemy]);
+                var instance = Spawn(GameManager.Prefabs[e.enemy]);
                 if (e.locationMethod == LocationMethod.Specified)
-                    instance.MoveToPosition(e.position, movingToDestinationSpeed);
+                    instance.MoveTo(e.position, movingToDestinationSpeed);
                 else
                 {
                     var pos = RandomUtils.RandomPointInBounds(destinationArea);
-                    instance.MoveToPosition(pos, movingToDestinationSpeed);
+                    instance.MoveTo(pos, movingToDestinationSpeed);
                 }
             }
         }
@@ -66,6 +65,7 @@ namespace Spawning
             currentWave.Add(instance);
             return instance;
         }
+
 
         #region Finding random location
 
