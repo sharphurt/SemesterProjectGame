@@ -10,6 +10,8 @@ namespace Controllers
         public float choke;
         public float scrollSpeed;
 
+        private bool stopProcess;
+
         private void Start()
         {
             screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(
@@ -60,12 +62,21 @@ namespace Controllers
                 }
             }
         }
-
-        private void Update()
+        
+        private void FixedUpdate()
         {
+            if (stopProcess)
+            {
+                scrollSpeed = Mathf.Lerp(scrollSpeed, 0, 0.007f);
+            }
             foreach (var obj in levels)
                 obj.transform.position += new Vector3(0, scrollSpeed, 0) * Time.deltaTime;
         
+        }
+
+        public void StopSmoothly()
+        {
+            stopProcess = true;
         }
 
         private void LateUpdate()

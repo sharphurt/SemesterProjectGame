@@ -1,18 +1,31 @@
+using System;
 using UnityEngine;
 
 namespace Entities
 {
     public class LevelEndPoint : MonoBehaviour
     {
-        void Start()
+        private float moveSpeed;
+
+        public delegate void GameWinHandler();
+
+        public event GameWinHandler OnGameWin;
+
+        private void FixedUpdate()
         {
-        
+            moveSpeed = Mathf.Lerp(moveSpeed, 0, 0.007f);
+            transform.position += new Vector3(0, moveSpeed, 0) * Time.deltaTime;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void MoveTo(float startSpeed)
         {
-        
+            moveSpeed = startSpeed;
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag("Player"))
+                OnGameWin?.Invoke();
         }
     }
 }

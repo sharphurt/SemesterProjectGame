@@ -25,7 +25,7 @@ namespace Spawning
         private readonly List<Enemy> currentWave = new List<Enemy>();
 
         public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
-        
+
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
         {
             foreach (var wave in waves)
@@ -46,7 +46,7 @@ namespace Spawning
             {
                 yield return new WaitForSeconds(e.spawningDelay);
 
-                var instance = Spawn(GameManager.Prefabs[e.enemy]);
+                var instance = SpawnEnemy(GameManager.EnemyPrefabs[e.prefab]);
                 if (e.locationMethod == LocationMethod.Specified)
                     instance.MoveTo(e.position, movingToDestinationSpeed);
                 else
@@ -57,7 +57,7 @@ namespace Spawning
             }
         }
 
-        private Enemy Spawn(Enemy enemy)
+        private Enemy SpawnEnemy(Enemy enemy)
         {
             var point = RandomUtils.RandomPointInBounds(spawningArea);
             var instance = Instantiate(enemy, point, Quaternion.identity);
