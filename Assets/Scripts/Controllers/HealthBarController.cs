@@ -11,15 +11,16 @@ namespace Controllers
         public Image healthBar;
 
         private Slider slider;
-        private int currentValue;
+        private float currentValue;
         private int reachingHealth;
         private int maxHealth;
 
         private void Update()
         {
-            if (currentValue != reachingHealth)
+            if (Math.Abs(currentValue - reachingHealth) > 0.01)
             {
-                currentValue = (int) Mathf.Lerp(currentValue, reachingHealth, 0.1f * Time.deltaTime);
+                Debug.Log(currentValue);
+                currentValue = Mathf.Lerp(currentValue, reachingHealth, 10 * Time.deltaTime);
                 slider.value = 1f / maxHealth * currentValue;
                 healthBar.color = gradient.Evaluate(slider.normalizedValue);
             }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Entities
 {
@@ -29,6 +30,12 @@ namespace Entities
                 joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
 
             rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
+        }
+
+        public override void Die()
+        {
+            base.Die();
+            SceneManager.LoadScene("MainMenu");
         }
     }
 }

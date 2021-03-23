@@ -278,7 +278,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667113415}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
@@ -666,8 +666,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b186e71f2f2b1bd4ab88ff972e17b5d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 100
+  health: 10
+  maxHealth: 10
   healthBarController: {fileID: 452426786}
   joystick: {fileID: 1857121054}
   acceleration: 3
@@ -781,7 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelData:
-    wavesData: []
+    waves: []
 --- !u!1 &1466142667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,7 +1102,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244737330078828676, guid: f70cfb2d818f63c47b9a988a400d1d63, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -22.3
+      value: -22.300049
       objectReference: {fileID: 0}
     - target: {fileID: 3244737330078828676, guid: f70cfb2d818f63c47b9a988a400d1d63, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

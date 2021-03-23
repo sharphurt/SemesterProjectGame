@@ -7,8 +7,8 @@ namespace Entities
 {
     public class Entity : MonoBehaviour
     {
-        public int health = 100;
-        public int maxHealth = 100;
+        public int health;
+        public int maxHealth;
         public HealthBarController healthBarController;
 
         public delegate void ObjectDestroyHandler(int gameObject);
@@ -17,7 +17,7 @@ namespace Entities
 
         public virtual void Start()
         {
-            healthBarController.SetHealthBar(100, 100, true);
+            healthBarController.SetHealthBar(health, maxHealth, true);
         }
 
         public void TakeDamage(int damage)
