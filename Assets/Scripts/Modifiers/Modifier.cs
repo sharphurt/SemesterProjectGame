@@ -5,40 +5,42 @@ namespace Modifiers
 {
     public class Modifier
     {
-        public float duration;
-        public float remained;
-        public float value;
-        public string fieldName;
-        
-        public bool IsOver => Math.Abs(remained) < 0.01;
+        public readonly float Duration;
+        public float Remained;
+        public readonly float Value;
+        public readonly string FieldName;
+        public readonly Sprite Icon;
 
         public delegate void ModifierExpirationHandler();
 
         public event ModifierExpirationHandler OnExpiration;
-        
+
         private bool isCountingDown;
         private float startCountingDownTime;
-        
-        public Modifier(float duration, float value, string fieldName)
+
+        public Modifier(float duration, float value, string fieldName, SpriteRenderer spriteRenderer)
         {
-            this.duration = duration;
-            this.value = value;
-            this.fieldName = fieldName;
+            Duration = duration;
+            Value = value;
+            FieldName = fieldName;
+            Icon = spriteRenderer.sprite;
         }
 
         public void StartTimer()
         {
             isCountingDown = true;
             startCountingDownTime = Time.time;
-            remained = duration;
+            Remained = Duration;
         }
+
+        public bool IsOver => Remained <= 0;
 
         public void Update()
         {
             if (!isCountingDown)
                 return;
-            remained = duration - (Time.time - startCountingDownTime);
-            if (Math.Abs(remained) < 0.01)
+            Remained = Duration - (Time.time - startCountingDownTime);
+            if (IsOver)
             {
                 isCountingDown = false;
                 OnExpiration?.Invoke();

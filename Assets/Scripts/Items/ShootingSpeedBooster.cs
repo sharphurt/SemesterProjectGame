@@ -10,7 +10,7 @@ namespace Items
         public override void PickUp(Player picker)
         {
             if (picker.TryGetComponent<ShootingAbility>(out var component))
-                component.AddModifier(new Modifier(5, 10, "ShootingPeriod"));
+                component.AddModifier(new Modifier(10, 10, "ShootingPeriod", gameObject.GetComponent<SpriteRenderer>()));
             else
                 Debug.LogError($"Cannot apply modifier to {picker} - entity hasn't appropriate ability");
         }

@@ -16,14 +16,23 @@ namespace Abilities
 
         public void AddModifier(Modifier modifier)
         {
-            modifiers.Add(modifier);
+            if (!modifiers.Contains(modifier))
+                modifiers.Add(modifier);
+
             modifier.StartTimer();
             OnModifierChanged?.Invoke();
             modifier.OnExpiration += RemoveExpiredModifiers;
         }
 
         private void Update() => modifiers.ForEach(m => m.Update());
-        
-        private void RemoveExpiredModifiers() => modifiers = modifiers.Where(m => !m.IsOver).ToList();
+
+        private void RemoveExpiredModifiers()
+        {
+            if (modifiers.All(m => !m.IsOver))
+                return;
+
+            modifiers = modifiers.Where(m => !m.IsOver).ToList();
+            OnModifierChanged?.Invoke();
+        }
     }
 }

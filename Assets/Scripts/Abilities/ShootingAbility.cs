@@ -15,7 +15,7 @@ namespace Abilities
         public float ShootingPeriod
         {
             get => TryFindModifiersForField(nameof(ShootingPeriod), out var modifier)
-                    ? PrimitiveModifyingFunctions.DivisionModifier(shootingPeriod, modifier.value)
+                    ? PrimitiveModifyingFunctions.DivisionModifier(shootingPeriod, modifier.Value)
                     : shootingPeriod;
             set => shootingPeriod = value;
         }
@@ -28,13 +28,13 @@ namespace Abilities
         
         private bool TryFindModifiersForField(string fieldName, out Modifier modifier)
         {
-            if (modifiers.All(m => m.fieldName != fieldName))
+            if (modifiers.All(m => m.FieldName != fieldName))
             {
                 modifier = null;
                 return false;
             }
 
-            modifier = modifiers.First(m => m.fieldName == fieldName);
+            modifier = modifiers.First(m => m.FieldName == fieldName);
             return true;
         }
     }

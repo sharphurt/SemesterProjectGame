@@ -15,6 +15,11 @@ namespace Controllers
         private int reachingHealth;
         private int maxHealth;
 
+        private void Awake()
+        {
+            slider ??= GetComponent<Slider>();
+        }
+
         private void Update()
         {
             if (Math.Abs(currentValue - reachingHealth) > 0.0001)
@@ -27,8 +32,6 @@ namespace Controllers
 
         public void SetHealthBar(int value, int max, bool isInstantly)
         {
-            slider ??= GetComponent<Slider>();
-
             reachingHealth = value;
             maxHealth = max;
             if (isInstantly)
