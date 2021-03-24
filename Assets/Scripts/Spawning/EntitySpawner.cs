@@ -24,7 +24,13 @@ namespace Spawning
 
         private readonly List<Enemy> currentWave = new List<Enemy>();
 
-        public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
+        public GameObject booster;
+        
+        public void SpawnWaves()
+        {
+            StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
+            StartCoroutine(SpawnBoosters());
+        }
 
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
         {
@@ -64,6 +70,15 @@ namespace Spawning
             instance.OnObjectDestroy += id => currentWave.RemoveAll(e => e.GetInstanceID() == id);
             currentWave.Add(instance);
             return instance;
+        }
+
+        private IEnumerator SpawnBoosters()
+        {
+            while (true)
+            {
+                Instantiate(booster, spawningArea.center, Quaternion.identity);
+                yield return new WaitForSeconds(5);
+            }
         }
 
 

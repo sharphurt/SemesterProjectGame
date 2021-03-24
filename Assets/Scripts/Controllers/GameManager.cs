@@ -26,6 +26,8 @@ namespace Controllers
         
         private void Start()
         {
+            Application.targetFrameRate = 300;
+            
             LevelData = GetComponent<LevelDataLoader>().LoadLevelData();
             entitySpawner = GetComponent<EntitySpawner>();
             player = FindObjectOfType<Player>();

@@ -6,7 +6,7 @@ namespace Entities
     {
         private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null)
+            if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null || other.gameObject.CompareTag("Boost"))
                 return;
 
             var enemy = other.GetComponent<Entity>();
