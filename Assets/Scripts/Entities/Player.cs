@@ -10,8 +10,6 @@ namespace Entities
         private Rigidbody2D rb;
         private BoxCollider2D boxCollider2D;
 
-        private bool controlByJoystick = true;
-
         public delegate void PlayerDeathHandler(string killer);
 
         public event PlayerDeathHandler OnPlayerDeath;
@@ -31,16 +29,13 @@ namespace Entities
                 Mathf.Clamp(rb.position.x, -screenEdges.x + boundsHalfSize.x, screenEdges.x - boundsHalfSize.x),
                 Mathf.Clamp(rb.position.y, -screenEdges.y + boundsHalfSize.y, screenEdges.y - boundsHalfSize.y));
 
-            if (controlByJoystick)
-            {
-                rb.velocity = new Vector2(
-                    joystick.Horizontal * acceleration + Input.GetAxis("Horizontal") * acceleration,
-                    joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
+            rb.velocity = new Vector2(
+                joystick.Horizontal * acceleration + Input.GetAxis("Horizontal") * acceleration,
+                joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
 
-                rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
-            }
+            rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
         }
-        
+
         public override void Die()
         {
             base.Die();

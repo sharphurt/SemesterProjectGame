@@ -1,26 +1,17 @@
 using System;
+using Controllers;
 using UnityEngine;
 
 namespace Entities
 {
     public class LevelEndPoint : MonoBehaviour
     {
-        private float moveSpeed;
-
         public delegate void GameWinHandler();
 
         public event GameWinHandler OnGameWin;
 
-        private void FixedUpdate()
-        {
-            moveSpeed = Mathf.Lerp(moveSpeed, 0, 0.007f);
-            transform.position += new Vector3(0, moveSpeed, 0) * Time.deltaTime;
-        }
-
-        public void MoveTo(float startSpeed)
-        {
-            moveSpeed = startSpeed;
-        }
+        private void Update() =>
+            transform.position += new Vector3(0, -GameManager.LevelMovementSpeed * Time.deltaTime, 0);
 
         private void OnTriggerEnter2D(Collider2D other)
         {

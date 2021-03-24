@@ -1,20 +1,26 @@
 ﻿using System;
 using System.Collections;
+using Abilities;
 using Controllers;
 using UnityEngine;
+using Utils;
 
 namespace Entities
 {
     public class RaysPatternProjectile : Projectile
     {
+        [Header("Bullets control")]
         public float launchPeriod;
         public int raysCount;
-        public StraightGunController straightGun;
+        public Bullet bullet;
+        public float bulletSpeed;
+        public float delay;
 
         private void Start() => StartCoroutine(ShootCoroutine());
 
         private IEnumerator ShootCoroutine()
         {
+            yield return new WaitForSeconds(delay);
             while (true)
             {
                 ShootRays();
@@ -22,14 +28,21 @@ namespace Entities
             }
         }
 
+        public void Shoot()
+        {
+            var instance = Instantiate(bullet, transform.position, Quaternion.Inverse(transform.rotation));
+            var rb = instance.GetComponent<Rigidbody2D>();
+            rb.velocity = Vector2Utils.Rotate(Vector2.up, rb.rotation) * bulletSpeed;
+            instance.shooterCollider = shooterCollider;
+            instance.shooterTag = shooterTag;
+        }
+
         private void ShootRays()
         {
             for (var i = 0; i < raysCount; i++)
             {
-                straightGun.shooterCollider = shooterCollider;
-                straightGun.shooterTag = shooterTag;
-                straightGun.transform.Rotate(0, 0, 360f / raysCount);
-                straightGun.Shoot();
+                transform.Rotate(0, 0, 360f / raysCount);
+                Shoot();
             }
         }
     }

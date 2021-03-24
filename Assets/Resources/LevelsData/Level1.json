@@ -1,6 +1,6 @@
 ﻿{
     "levelEnd": {
-        "delay": 3,
+        "delay": 10,
         "prefab": "Castle",
         "spawnPosition": {
             "x": 0.0,
@@ -13,7 +13,7 @@
     },
     "waves": [
         {
-            "repeats": 1,
+            "repeats": 10,
             "waveElements": [
                 {
                     "prefab": "Zombie",
@@ -22,7 +22,7 @@
                         "x": -2.0,
                         "y": 1.7
                     },
-                    "spawningDelay": 1
+                    "spawningDelay": 0
                 },
                 {
                     "prefab": "Zombie",
@@ -31,7 +31,7 @@
                         "x": 2.0,
                         "y": 1.7
                     },
-                    "spawningDelay": 2
+                    "spawningDelay": 0
                 },
                 {
                     "prefab": "Zombie",
@@ -40,7 +40,7 @@
                         "x": -2.0,
                         "y": 3.8
                     },
-                    "spawningDelay": 3
+                    "spawningDelay": 0
                 },
                 {
                     "prefab": "Zombie",
@@ -49,7 +49,7 @@
                         "x": 2.0,
                         "y": 3.8
                     },
-                    "spawningDelay": 4
+                    "spawningDelay": 0
                 }
             ]
         },

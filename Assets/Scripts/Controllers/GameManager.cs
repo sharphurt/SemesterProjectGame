@@ -13,23 +13,25 @@ namespace Controllers
     public class GameManager : MonoBehaviour
     {
         public static Dictionary<string, Enemy> EnemyPrefabs { get; private set; }
-        public static LevelEndPoint LevelEndPoint { get; private set; }
+        public static LevelEndPoint LevelEndPointPrefab { get; private set; }
 
         public static LevelData.LevelData LevelData { get; private set; }
 
+        public static float LevelMovementSpeed = 2;
+
         private Player player;
         private EntitySpawner entitySpawner;
-        private VerticalBackgroundLoopController backgroundDriver;
 
+        private bool isFinishing;
+        
         private void Start()
         {
             LevelData = GetComponent<LevelDataLoader>().LoadLevelData();
             entitySpawner = GetComponent<EntitySpawner>();
             player = FindObjectOfType<Player>();
-            backgroundDriver = FindObjectOfType<VerticalBackgroundLoopController>();
 
             EnemyPrefabs = LoadEnemyPrefabs();
-            LevelEndPoint = Resources.Load<LevelEndPoint>($"Prefabs/LevelEndPoints/{LevelData.levelEnd.prefab}");
+            LevelEndPointPrefab = Resources.Load<LevelEndPoint>($"Prefabs/LevelEndPoints/{LevelData.levelEnd.prefab}");
 
             player.OnPlayerDeath += PlayerDeathHandler;
             entitySpawner.OnWavesOver += WavesAreOverHandler;
@@ -54,13 +56,18 @@ namespace Controllers
             StartCoroutine(EndLevelCoroutine());
         }
 
+        private void Update()
+        {
+            if (isFinishing)
+                LevelMovementSpeed = Mathf.Lerp(LevelMovementSpeed, 0, 0.01f);
+        }
+
         private IEnumerator EndLevelCoroutine()
         {
             yield return new WaitForSeconds(LevelData.levelEnd.delay);
-            var instance = Instantiate(LevelEndPoint, LevelData.levelEnd.spawnPosition, Quaternion.identity);
+            isFinishing = true;
+            var instance = Instantiate(LevelEndPointPrefab, LevelData.levelEnd.spawnPosition, Quaternion.identity);
             instance.OnGameWin += GameWinHandler;
-            backgroundDriver.StopSmoothly();
-            instance.MoveTo(backgroundDriver.scrollSpeed);
         }
 
         private void GameWinHandler()

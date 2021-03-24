@@ -18,9 +18,9 @@ namespace Controllers
         private void ShootToTarget(Transform target)
         {
             var (angle, directionalVector) = CalculateFacingToTarget(target);
-            var instance = Instantiate(bullet, transform.position, angle);
+            var instance = Instantiate(ShootingAbility.bullet, transform.position, angle);
             var rb = instance.GetComponent<Rigidbody2D>();
-            rb.velocity = directionalVector * speed;
+            rb.velocity = directionalVector * ShootingAbility.speed;
             instance.shooterCollider = shooterCollider;
             instance.shooterTag = shooterTag;
         }

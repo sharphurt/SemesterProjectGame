@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using Abilities;
 using Controllers;
+using Modifiers;
 using UnityEngine;
 
 namespace Entities
@@ -10,7 +13,7 @@ namespace Entities
         public int health;
         public int maxHealth;
         public HealthBarController healthBarController;
-
+        
         public delegate void ObjectDestroyHandler(int gameObject);
 
         public event ObjectDestroyHandler OnObjectDestroy;
