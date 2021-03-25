@@ -29,7 +29,7 @@ namespace Spawning
         public void SpawnWaves()
         {
             StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
-            StartCoroutine(SpawnBoosters());
+            //StartCoroutine(SpawnBoosters());
         }
 
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)

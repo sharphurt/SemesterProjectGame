@@ -12,7 +12,7 @@ namespace Entities
     {
         public int health;
         public int maxHealth;
-        public HealthBarController healthBarController;
+        public ProgressBarController progressBarController;
         
         public delegate void ObjectDestroyHandler(int gameObject);
 
@@ -20,13 +20,13 @@ namespace Entities
 
         public virtual void Start()
         {
-            healthBarController.SetHealthBar(health, maxHealth, true);
+            progressBarController.SetHealthBar(health, maxHealth, true);
         }
 
         public void TakeDamage(int damage)
         {
             health -= damage;
-            healthBarController.SetHealthBar(health, maxHealth, false);
+            progressBarController.SetHealthBar(health, maxHealth, false);
             if (health <= 0)
                 Die();
         }

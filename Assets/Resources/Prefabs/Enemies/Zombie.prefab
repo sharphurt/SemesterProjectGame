@@ -328,7 +328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  healthBarController: {fileID: 8880108136328686054}
+  progressBarController: {fileID: 4876644425221233529}
 --- !u!114 &8601021506798585039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +341,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051d5fd8dbf48e586b3e47c0b11bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifiers: []
   shootingPeriod: 3
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   speed: 3
@@ -390,18 +389,6 @@ PrefabInstance:
     - target: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0.07
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.4002632
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.4002632
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.4002632
       objectReference: {fileID: 0}
     - target: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
       propertyPath: m_LocalPosition.x
@@ -463,38 +450,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: -0.4891
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: -0.0557
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5949417560401640579, guid: 84cf403be608b164b9943b0587611a08, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84cf403be608b164b9943b0587611a08, type: 3}
 --- !u!224 &8880108136328686052 stripped
@@ -502,14 +457,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
   m_PrefabInstance: {fileID: 3003031180500226937}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8880108136328686054 stripped
+--- !u!114 &4876644425221233529 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5949417559321098911, guid: 84cf403be608b164b9943b0587611a08, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7638591737301043200, guid: 84cf403be608b164b9943b0587611a08, type: 3}
   m_PrefabInstance: {fileID: 3003031180500226937}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4d7329af55ac347b0eb6d43a883ece, type: 3}
+  m_Script: {fileID: 11500000, guid: 693753de0864490cbf73c629dea22dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

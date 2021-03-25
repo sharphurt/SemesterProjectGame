@@ -1,32 +1,35 @@
 ﻿using System.IO;
 using UnityEngine;
 
-public static class JsonParser
+namespace Utils
 {
-    public static bool TryParse<T>(string path, out T levelData)
+    public static class JsonParser
     {
-        if (TryGetJsonFile(path, out var json))
+        public static bool TryParse<T>(string path, out T levelData)
         {
-            levelData = JsonUtility.FromJson<T>(json.Replace("\uFEFF", ""));
-            return true;
-        }
+            if (TryGetJsonFile(path, out var json))
+            {
+                levelData = JsonUtility.FromJson<T>(json.Replace("\uFEFF", ""));
+                return true;
+            }
 
-        levelData = default;
-        return false;
-    }
-
-    private static bool TryGetJsonFile(string path, out string text)
-    {
-        try
-        {
-            text = Resources.Load<TextAsset>(path).text;
-            return true;
-        }
-        catch (IOException e)
-        {
-            Debug.LogException(e);
-            text = string.Empty;
+            levelData = default;
             return false;
+        }
+
+        private static bool TryGetJsonFile(string path, out string text)
+        {
+            try
+            {
+                text = Resources.Load<TextAsset>(path).text;
+                return true;
+            }
+            catch (IOException e)
+            {
+                Debug.LogException(e);
+                text = string.Empty;
+                return false;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-using System.Collections;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using Abilities;
 using Modifiers;
@@ -8,55 +9,42 @@ namespace Controllers
 {
     public class ListController : MonoBehaviour
     {
-        public Ability playersAbilities;
+        public List<Ability> playersAbilities;
 
         public ListItem listItem;
 
         private void Start()
         {
-            playersAbilities.OnModifierChanged += UpdateList;
-            StartCoroutine(UpdateListItemsCoroutine());
-        }
-
-        private IEnumerator UpdateListItemsCoroutine()
-        {
-            while (true)
+            playersAbilities.ForEach(ability =>
             {
-                foreach (Transform i in transform)
-                {
-                    var item = i.GetComponent<ListItem>();
-                    item.bar.SetHealthBar((int) item.modifier.Remained, (int) item.modifier.Duration, false);
-                }
-
-                yield return new WaitForSeconds(0.5f);
-            }
+                ability.OnModifierAdded += AddItem;
+                ability.OnModifierRemoved += RemoveItem;
+            });
         }
 
-        private void UpdateList()
-        { 
-            foreach (Transform child in transform)
-            {
-                Debug.Log(child.name);
-                var modifier = child.GetComponent<ListItem>().modifier;
-                Debug.Log($"{modifier.Remained} {modifier.IsOver}");
-                if (child.GetComponent<ListItem>().modifier.IsOver)
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-
-            var allChildren = GetComponentsInChildren<ListItem>();
-        
-            foreach (var modifier in playersAbilities.modifiers.Where(modifier => allChildren.All(c => c.modifier != modifier)))
-                InstantNewListItem(modifier);
-        }
-
-        private void InstantNewListItem(Modifier modifier)
+        private void UpdateItem(Modifier modifier)
         {
+            GetComponentsInChildren<ListItem>()
+                .First(item => item.modifier == modifier)
+                .barWithIcon.UpdateValue(modifier.Remained);
+        }
+
+        private void AddItem(Modifier modifier)
+        {
+            if (GetComponentsInChildren<ListItem>().Any(item => item.modifier == modifier))
+                throw new InvalidOperationException("An element with this modifier already exists");
+
             var instance = Instantiate(listItem, Vector3.one, Quaternion.identity, gameObject.transform);
+            modifier.OnUpdate += UpdateItem;
             instance.modifier = modifier;
-            instance.image.sprite = modifier.Icon;
-            instance.bar.SetHealthBar((int) modifier.Remained, (int) modifier.Duration, true);
+            instance.barWithIcon.SetIcon(modifier.Icon);
+            instance.barWithIcon.SetHealthBar((int) modifier.Remained, (int) modifier.Duration, true);
         }
+
+        private void RemoveItem(Modifier modifier) =>
+            GetComponentsInChildren<ListItem>()
+                .Where(item => item.modifier == modifier)
+                .Select(i => i.gameObject).ToList()
+                .ForEach(Destroy);
     }
 }

@@ -12,8 +12,8 @@ namespace Controllers
 
         private Slider slider;
         private float currentValue;
-        private int reachingHealth;
-        private int maxHealth;
+        private float reachingHealth;
+        private float maxHealth;
 
         private void Awake()
         {
@@ -41,5 +41,7 @@ namespace Controllers
                 slider.value = 1f / maxHealth * currentValue;
             }
         }
+
+        public void UpdateValue(float value) => reachingHealth = value;
     }
 }

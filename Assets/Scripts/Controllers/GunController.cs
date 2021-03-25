@@ -22,7 +22,8 @@ namespace Controllers
             shooterTag = parent.tag;
 
             ShootingAbility = GetComponentInParent<ShootingAbility>();
-            ShootingAbility.OnModifierChanged += ModifierChangedHandler;
+            ShootingAbility.OnModifierAdded += modifier => ModifierChangedHandler();
+            ShootingAbility.OnModifierRemoved += modifier => ModifierChangedHandler();
 
             if (ShootingAbility == null)
                 Debug.LogError("Using Gun without Shooting ability on parent");

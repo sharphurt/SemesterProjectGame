@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Timers;
 using UnityEngine;
+using Utils;
 
 namespace Modifiers
 {
@@ -16,34 +18,50 @@ namespace Modifiers
 
         public event ModifierExpirationHandler OnExpiration;
 
-        private Timer timer = new Timer(1000);
+        public delegate void ModifierUpdateHandler(Modifier modifier);
 
-        public Modifier(float duration, float value, string fieldName, SpriteRenderer spriteRenderer)
+        public event ModifierUpdateHandler OnUpdate;
+
+        private float timer;
+
+        public Modifier(float value, float duration, string fieldName, SpriteRenderer spriteRenderer)
         {
             Duration = duration;
             Value = value;
             FieldName = fieldName;
             Icon = spriteRenderer.sprite;
-            timer.Elapsed += (sender, args) => OnTimerTick();
+
+            UpdateCaller.OnUpdate += Update;
         }
 
         public void StartTimer()
         {
-            timer.Stop();
             Remained = Duration;
-            timer.Start();
+            timer = 0;
         }
 
         public bool IsOver => Remained <= 0;
 
-        private void OnTimerTick()
+        private void Update()
         {
-            Remained--;
-            if (!IsOver) return;
-            timer.Stop();
-            OnExpiration?.Invoke();
+            if (IsOver)
+                return;
+
+            timer += Time.deltaTime;
+            if (timer >= 1)
+            {
+                Remained--;
+                timer -= 1;
+                OnUpdate?.Invoke(this);
+            }
+
+
+            if (IsOver)
+                OnExpiration?.Invoke();
         }
 
         public void Reset() => StartTimer();
+
+        public void UnsubscribeFromUpdateEvent() => UpdateCaller.OnUpdate -= Update;
     }
 }

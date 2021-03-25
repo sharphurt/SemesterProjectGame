@@ -149,7 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
-  healthBarController: {fileID: 3251586047796586563}
+  progressBarController: {fileID: 1553422193173863132}
 --- !u!114 &6905502564837150811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,7 +162,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051d5fd8dbf48e586b3e47c0b11bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  modifiers: []
   shootingPeriod: 0
   bullet: {fileID: 1614476218841627659, guid: 5600e03f3d868b048b32d2bdecd0570b, type: 3}
   speed: 1
@@ -468,14 +467,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 5949417559321098909, guid: 84cf403be608b164b9943b0587611a08, type: 3}
   m_PrefabInstance: {fileID: 9191679678602416860}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3251586047796586563 stripped
+--- !u!114 &1553422193173863132 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5949417559321098911, guid: 84cf403be608b164b9943b0587611a08, type: 3}
+  m_CorrespondingSourceObject: {fileID: 7638591737301043200, guid: 84cf403be608b164b9943b0587611a08, type: 3}
   m_PrefabInstance: {fileID: 9191679678602416860}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4d7329af55ac347b0eb6d43a883ece, type: 3}
+  m_Script: {fileID: 11500000, guid: 693753de0864490cbf73c629dea22dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

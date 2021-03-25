@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5949417559321098909}
   - component: {fileID: 5949417559321098908}
-  - component: {fileID: 5949417559321098911}
+  - component: {fileID: 7638591737301043200}
   m_Layer: 5
-  m_Name: EnemyHealthBar 1
+  m_Name: EnemyHealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 5949417559321098914}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.4002632, y: 1.4002632, z: 1.4002632}
   m_Children:
   - {fileID: 5949417560401640579}
   m_Father: {fileID: 0}
@@ -89,7 +89,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &5949417559321098911
+--- !u!114 &7638591737301043200
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5949417559321098914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da4d7329af55ac347b0eb6d43a883ece, type: 3}
+  m_Script: {fileID: 11500000, guid: 693753de0864490cbf73c629dea22dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gradient:
@@ -130,7 +130,7 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 3
-  healthBar: {fileID: 5949417559370638678}
+  healthBar: {fileID: 5949417560401640578}
 --- !u!1 &5949417559370638676
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,10 +239,10 @@ RectTransform:
   m_Father: {fileID: 5949417559321098909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 40.0976, y: 2.3469}
+  m_SizeDelta: {x: -0.4891, y: -0.0557}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5949417560401640701
 CanvasRenderer:
