@@ -8,7 +8,7 @@ namespace Items
     public abstract class Item : MonoBehaviour
     {
         private void Update() =>
-            transform.position += new Vector3(0, -GameManager.LevelMovementSpeed * Time.deltaTime, 0);
+            transform.position += new Vector3(0, -GameManager.MovementSpeed * Time.deltaTime, 0);
 
         private void OnTriggerEnter2D(Collider2D other)
         {

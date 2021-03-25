@@ -1,4 +1,5 @@
 using System;
+using System.Timers;
 using UnityEngine;
 
 namespace Modifiers
@@ -15,8 +16,7 @@ namespace Modifiers
 
         public event ModifierExpirationHandler OnExpiration;
 
-        private bool isCountingDown;
-        private float startCountingDownTime;
+        private Timer timer = new Timer(1000);
 
         public Modifier(float duration, float value, string fieldName, SpriteRenderer spriteRenderer)
         {
@@ -24,27 +24,26 @@ namespace Modifiers
             Value = value;
             FieldName = fieldName;
             Icon = spriteRenderer.sprite;
+            timer.Elapsed += (sender, args) => OnTimerTick();
         }
 
         public void StartTimer()
         {
-            isCountingDown = true;
-            startCountingDownTime = Time.time;
+            timer.Stop();
             Remained = Duration;
+            timer.Start();
         }
 
         public bool IsOver => Remained <= 0;
 
-        public void Update()
+        private void OnTimerTick()
         {
-            if (!isCountingDown)
-                return;
-            Remained = Duration - (Time.time - startCountingDownTime);
-            if (IsOver)
-            {
-                isCountingDown = false;
-                OnExpiration?.Invoke();
-            }
+            Remained--;
+            if (!IsOver) return;
+            timer.Stop();
+            OnExpiration?.Invoke();
         }
+
+        public void Reset() => StartTimer();
     }
 }

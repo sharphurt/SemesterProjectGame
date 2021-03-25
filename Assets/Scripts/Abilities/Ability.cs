@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Modifiers;
@@ -16,18 +17,38 @@ namespace Abilities
 
         public void AddModifier(Modifier modifier)
         {
-            if (!modifiers.Contains(modifier))
+            if (modifiers.Any(m => m.FieldName == modifier.FieldName))
+            {
+                modifiers.First(m => m.FieldName == modifier.FieldName).Reset();
+            }
+            else
+            {
                 modifiers.Add(modifier);
-
-            modifier.StartTimer();
-            OnModifierChanged?.Invoke();
-            modifier.OnExpiration += RemoveExpiredModifiers;
+                modifier.OnExpiration += RemoveExpiredModifiers;
+                modifier.StartTimer();
+                OnModifierChanged?.Invoke();
+            }
         }
 
-        private void Update() => modifiers.ForEach(m => m.Update());
+        //private void Start() => StartCoroutine(UpdateModifiers());
+
+        /*private IEnumerator UpdateModifiers()
+        {
+            while (true)
+            {
+                modifiers.ForEach(m => m.Update());
+                yield return new WaitForSeconds(0.1f);
+            }
+        }*/
+
+        private void Update()
+        {
+          //  modifiers.ForEach(m => m.Update());
+        }
 
         private void RemoveExpiredModifiers()
         {
+            Debug.Log("Expired");
             if (modifiers.All(m => !m.IsOver))
                 return;
 

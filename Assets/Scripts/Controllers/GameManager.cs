@@ -17,7 +17,8 @@ namespace Controllers
 
         public static LevelData.LevelData LevelData { get; private set; }
 
-        public static float LevelMovementSpeed = 2;
+        public static float MovementSpeed;
+        public float levelMovementSpeed;
 
         private Player player;
         private EntitySpawner entitySpawner;
@@ -27,6 +28,8 @@ namespace Controllers
         private void Start()
         {
             Application.targetFrameRate = 300;
+
+            MovementSpeed = levelMovementSpeed;
             
             LevelData = GetComponent<LevelDataLoader>().LoadLevelData();
             entitySpawner = GetComponent<EntitySpawner>();
@@ -61,7 +64,7 @@ namespace Controllers
         private void Update()
         {
             if (isFinishing)
-                LevelMovementSpeed = Mathf.Lerp(LevelMovementSpeed, 0, 0.01f);
+                MovementSpeed = Mathf.Lerp(MovementSpeed, 0, 0.01f);
         }
 
         private IEnumerator EndLevelCoroutine()
