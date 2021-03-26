@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Abilities;
+using Entities;
 using Modifiers;
 using UnityEngine;
 
@@ -9,12 +10,14 @@ namespace Controllers
 {
     public class ListController : MonoBehaviour
     {
-        public List<Ability> playersAbilities;
-
         public ListItem listItem;
-
+        
+        private List<Ability> playersAbilities;
+        
         private void Start()
         {
+            playersAbilities = FindObjectOfType<Player>().GetComponents<Ability>().ToList();
+            
             playersAbilities.ForEach(ability =>
             {
                 ability.OnModifierAdded += AddItem;

@@ -40,5 +40,17 @@ namespace Abilities
                 OnModifierRemoved?.Invoke(modifier);
             }
         }
+        
+        protected bool TryFindModifiersForField(string fieldName, out Modifier modifier)
+        {
+            if (modifiers.All(m => m.FieldName != fieldName))
+            {
+                modifier = null;
+                return false;
+            }
+
+            modifier = modifiers.First(m => m.FieldName == fieldName);
+            return true;
+        }
     }
 }

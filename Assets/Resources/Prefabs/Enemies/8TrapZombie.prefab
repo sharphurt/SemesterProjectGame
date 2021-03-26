@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2173647027882728350}
   - component: {fileID: 8363691802269687475}
   - component: {fileID: 6905502564837150811}
+  - component: {fileID: 6946433232303496722}
   m_Layer: 0
   m_Name: 8TrapZombie
   m_TagString: Enemy
@@ -168,6 +169,18 @@ MonoBehaviour:
   startDelay: 0
   isInfinityShooting: 0
   shootsCount: 1
+--- !u!114 &6946433232303496722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173647027882728325}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b856361724be4d42ba37fd66f8a4cd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2173647028444922386
 GameObject:
   m_ObjectHideFlags: 0

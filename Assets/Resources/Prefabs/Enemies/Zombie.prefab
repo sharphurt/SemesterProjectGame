@@ -174,6 +174,7 @@ GameObject:
   - component: {fileID: 5190916929802328635}
   - component: {fileID: 2464104947051192086}
   - component: {fileID: 8601021506798585039}
+  - component: {fileID: 2185330449062105897}
   m_Layer: 0
   m_Name: Zombie
   m_TagString: Enemy
@@ -341,12 +342,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051d5fd8dbf48e586b3e47c0b11bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootingPeriod: 3
+  shootingPeriod: 1
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   speed: 3
   startDelay: 0
   isInfinityShooting: 1
   shootsCount: 0
+--- !u!114 &2185330449062105897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190916929802328608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b856361724be4d42ba37fd66f8a4cd0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &857195623975573085
 PrefabInstance:
   m_ObjectHideFlags: 0

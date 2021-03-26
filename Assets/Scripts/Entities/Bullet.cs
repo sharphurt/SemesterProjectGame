@@ -9,9 +9,9 @@ namespace Entities
             if (other.gameObject.CompareTag(shooterTag) || other.GetComponent<Bullet>() != null || other.gameObject.CompareTag("Boost"))
                 return;
 
-            var enemy = other.GetComponent<Entity>();
-            if (enemy != null)
-                enemy.TakeDamage(damage);
+            var entity = other.GetComponent<Entity>();
+            if (entity != null)
+                entity.TakeDamage(damage);
 
             if (impactEffect != null)
                 Instantiate(impactEffect, transform.position, transform.rotation);

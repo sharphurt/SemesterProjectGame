@@ -30,7 +30,7 @@ namespace Controllers
             }
         }
 
-        public void SetHealthBar(int value, int max, bool isInstantly)
+        public void SetHealthBar(float value, float max, bool isInstantly)
         {
             reachingHealth = value;
             maxHealth = max;

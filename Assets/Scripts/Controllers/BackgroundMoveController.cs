@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Controllers
 {
@@ -7,13 +6,7 @@ namespace Controllers
     {
         private float scrollOffset;
 
-        private void Start()
-        {
-            
-            scrollOffset = GetComponent<SpriteRenderer>().bounds.size.y;
-            Debug.Log(GetComponent<SpriteRenderer>().bounds.size.y);
-        }
-
+        private void Start() => scrollOffset = GetComponent<SpriteRenderer>().bounds.size.y;
 
         private void Update() =>
             transform.position += new Vector3(0, -GameManager.MovementSpeed * Time.deltaTime, 0);

@@ -1,31 +1,32 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using Abilities;
+﻿using Abilities;
 using Controllers;
-using Modifiers;
 using UnityEngine;
 
 namespace Entities
 {
     public class Entity : MonoBehaviour
     {
-        public int health;
-        public int maxHealth;
+        public float health;
+        public float maxHealth;
         public ProgressBarController progressBarController;
-        
+
+        private GettingDamageAbility gettingDamageAbility;
+
         public delegate void ObjectDestroyHandler(int gameObject);
 
         public event ObjectDestroyHandler OnObjectDestroy;
 
         public virtual void Start()
         {
+            gettingDamageAbility = GetComponent<GettingDamageAbility>();
+            
             progressBarController.SetHealthBar(health, maxHealth, true);
         }
 
         public void TakeDamage(int damage)
         {
-            health -= damage;
+            gettingDamageAbility.Damage = damage;
+            health -= gettingDamageAbility.Damage;
             progressBarController.SetHealthBar(health, maxHealth, false);
             if (health <= 0)
                 Die();
