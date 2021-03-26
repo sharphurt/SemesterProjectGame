@@ -64,6 +64,7 @@ namespace Spawning
         {
             var point = RandomUtils.RandomPointInBounds(spawningArea);
             var instance = Instantiate(enemy, point, Quaternion.identity);
+            instance.entityName = enemy.name;
             instance.OnObjectDestroy += id => currentWave.RemoveAll(e => e.GetInstanceID() == id);
             currentWave.Add(instance);
             return instance;

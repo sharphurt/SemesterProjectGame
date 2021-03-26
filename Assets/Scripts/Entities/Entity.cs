@@ -1,5 +1,7 @@
-﻿using Abilities;
+﻿using System.Linq;
+using Abilities;
 using Controllers;
+using Items;
 using UnityEngine;
 
 namespace Entities
@@ -8,6 +10,12 @@ namespace Entities
     {
         public float health;
         public float maxHealth;
+
+        public string entityName;
+
+        public bool dropsAfterDeath;
+        public float dropChance;
+
         public ProgressBarController progressBarController;
 
         private GettingDamageAbility gettingDamageAbility;
@@ -19,7 +27,7 @@ namespace Entities
         public virtual void Start()
         {
             gettingDamageAbility = GetComponent<GettingDamageAbility>();
-            
+
             progressBarController.SetHealthBar(health, maxHealth, true);
         }
 
@@ -32,10 +40,33 @@ namespace Entities
                 Die();
         }
 
+        private void DropItem()
+        {
+            var item = SelectItemToDrop();
+            Instantiate(item, transform.position, Quaternion.identity);
+        }
+
+        private Item SelectItemToDrop()
+        {
+            if (!GameManager.LootTables.ContainsKey(entityName))
+            {
+                Debug.LogError($"There is no loot table for entity \"{name}\"");
+                return null;
+            }
+
+            var lootTable = GameManager.LootTables[entityName];
+            var possibleBoosters = lootTable.boosters.Where(b => Random.value <= b.chance).ToList();
+            var booster = possibleBoosters[Random.Range(0, possibleBoosters.Count)];
+            return GameManager.ItemPrefabs[booster.name];
+        }
+
         public virtual void Die()
         {
+            if (dropsAfterDeath)
+                DropItem();
             Destroy(gameObject);
             OnObjectDestroy?.Invoke(GetInstanceID());
+         
         }
 
         public void SetMaxHealth(float value, bool resetCurrentHealth = false)
