@@ -55,12 +55,15 @@ namespace Modifiers
                 OnUpdate?.Invoke(this);
             }
 
-
             if (IsOver)
                 OnExpiration?.Invoke();
         }
 
-        public void Reset() => StartTimer();
+        public void Reset()
+        {
+            StartTimer();
+            OnUpdate?.Invoke(this);
+        }
 
         public void UnsubscribeFromUpdateEvent() => UpdateCaller.OnUpdate -= Update;
     }

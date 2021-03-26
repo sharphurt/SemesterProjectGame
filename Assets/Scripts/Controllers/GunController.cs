@@ -2,6 +2,7 @@
 using System.Collections;
 using Abilities;
 using Entities;
+using Modifiers;
 using UnityEngine;
 
 namespace Controllers
@@ -22,8 +23,8 @@ namespace Controllers
             shooterTag = parent.tag;
 
             ShootingAbility = GetComponentInParent<ShootingAbility>();
-            ShootingAbility.OnModifierAdded += modifier => ModifierChangedHandler();
-            ShootingAbility.OnModifierRemoved += modifier => ModifierChangedHandler();
+            ShootingAbility.OnModifierAdded += ModifierChangedHandler;
+            ShootingAbility.OnModifierRemoved += ModifierChangedHandler;
 
             if (ShootingAbility == null)
                 Debug.LogError("Using Gun without Shooting ability on parent");
@@ -48,11 +49,19 @@ namespace Controllers
             }
         }
 
-        private void ModifierChangedHandler()
+        private void ModifierChangedHandler(Modifier modifier)
         {
+            if (modifier.FieldName != "ShootingPeriod")
+                return;
             StopAllCoroutines();
             StartCoroutine(PeriodicallyShootCoroutine(ShootingAbility.isInfinityShooting,
                 ShootingAbility.shootsCount));
+        }
+
+        private void OnDestroy()
+        {
+            ShootingAbility.OnModifierAdded -= ModifierChangedHandler;
+            ShootingAbility.OnModifierRemoved -= ModifierChangedHandler;
         }
     }
 }

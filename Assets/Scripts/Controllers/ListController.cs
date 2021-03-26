@@ -11,13 +11,13 @@ namespace Controllers
     public class ListController : MonoBehaviour
     {
         public ListItem listItem;
-        
+
         private List<Ability> playersAbilities;
-        
+
         private void Start()
         {
             playersAbilities = FindObjectOfType<Player>().GetComponents<Ability>().ToList();
-            
+
             playersAbilities.ForEach(ability =>
             {
                 ability.OnModifierAdded += AddItem;
@@ -49,5 +49,18 @@ namespace Controllers
                 .Where(item => item.modifier == modifier)
                 .Select(i => i.gameObject).ToList()
                 .ForEach(Destroy);
+
+        private void OnDestroy()
+        {
+            GetComponentsInChildren<ListItem>()
+                .ToList()
+                .ForEach(item => item.modifier.OnUpdate -= UpdateItem);
+
+            playersAbilities.ForEach(ability =>
+            {
+                ability.OnModifierAdded -= AddItem;
+                ability.OnModifierRemoved -= RemoveItem;
+            });
+        }
     }
 }
