@@ -13,7 +13,7 @@
     },
     "waves": [
         {
-            "repeats": 2,
+            "repeats": 5,
             "waveElements": [
                 {
                     "prefab": "Zombie",
@@ -32,7 +32,7 @@
                         "x": 2.0,
                         "y": 1.7
                     },
-                    "hp": 10,
+                    "hp": 100,
                     "spawningDelay": 0
                 },
                 {
@@ -52,7 +52,7 @@
                         "x": 2.0,
                         "y": 3.8
                     },
-                    "hp": 10,
+                    "hp": 100,
                     "spawningDelay": 0
                 }
             ]

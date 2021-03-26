@@ -2,11 +2,11 @@
     "boosters": [
         {
             "name": "ShootingSpeedBooster",
-            "chance": 1
+            "chance": 0.5
         },
         {
             "name": "InvincibleBooster",
-            "chance": 1
+            "chance": 0.5
         }
     ]
 }

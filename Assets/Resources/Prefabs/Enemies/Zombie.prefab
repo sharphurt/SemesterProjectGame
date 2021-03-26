@@ -329,8 +329,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   maxHealth: 100
+  entityName: 
   dropsAfterDeath: 1
-  dropChance: 1
+  dropChance: 0.2
   progressBarController: {fileID: 2802014715869994715}
 --- !u!114 &8601021506798585039
 MonoBehaviour:

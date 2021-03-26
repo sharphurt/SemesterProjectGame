@@ -62,7 +62,7 @@ namespace Entities
 
         public virtual void Die()
         {
-            if (dropsAfterDeath)
+            if (dropsAfterDeath && Random.value <= dropChance)
                 DropItem();
             Destroy(gameObject);
             OnObjectDestroy?.Invoke(GetInstanceID());
