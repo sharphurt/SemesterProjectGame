@@ -37,5 +37,12 @@ namespace Entities
             Destroy(gameObject);
             OnObjectDestroy?.Invoke(GetInstanceID());
         }
+
+        public void SetMaxHealth(float value, bool resetCurrentHealth = false)
+        {
+            maxHealth = value;
+            if (resetCurrentHealth)
+                health = maxHealth;
+        }
     }
 }

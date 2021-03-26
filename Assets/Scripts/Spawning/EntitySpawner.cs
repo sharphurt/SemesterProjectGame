@@ -26,11 +26,7 @@ namespace Spawning
 
         public GameObject booster;
         
-        public void SpawnWaves()
-        {
-            StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
-            //StartCoroutine(SpawnBoosters());
-        }
+        public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
 
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
         {
@@ -53,6 +49,7 @@ namespace Spawning
                 yield return new WaitForSeconds(e.spawningDelay);
 
                 var instance = SpawnEnemy(GameManager.EnemyPrefabs[e.prefab]);
+                instance.SetMaxHealth(e.hp, true);
                 if (e.locationMethod == LocationMethod.Specified)
                     instance.MoveTo(e.position, movingToDestinationSpeed);
                 else

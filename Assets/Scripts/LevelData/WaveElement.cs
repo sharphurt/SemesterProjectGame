@@ -9,6 +9,7 @@ namespace LevelData
         public string prefab;
         public LocationMethod locationMethod;
         public Vector2 position;
+        public float hp;
         public float spawningDelay;
     }
 }

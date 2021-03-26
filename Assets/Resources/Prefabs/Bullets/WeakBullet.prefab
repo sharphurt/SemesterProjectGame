@@ -134,7 +134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d5e0b446f16e1b4b8241dbcb23b4610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   shooterCollider: {fileID: 0}
   shooterTag: 
   impactEffect: {fileID: 0}
