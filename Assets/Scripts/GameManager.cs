@@ -79,9 +79,12 @@ public class GameManager : MonoBehaviour
     private IEnumerator EndLevelCoroutine()
     {
         yield return new WaitForSeconds(LevelData.levelEnd.delay);
-        isFinishing = true;
         var instance = Instantiate(LevelEndPointPrefab, LevelData.levelEnd.spawnPosition, Quaternion.identity);
         instance.OnGameWin += GameWinHandler;
+        player.DisableJoystickControl();
+        player.MoveTo(instance.GetComponentInChildren<Transform>().position, 0.3f);
+        isFinishing = true;
+
     }
 
     private void GameWinHandler() => SceneManager.LoadScene("MainMenu");

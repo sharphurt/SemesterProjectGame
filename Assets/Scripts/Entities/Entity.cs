@@ -1,8 +1,18 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Numerics;
+using System.Text;
 using Abilities;
 using Controllers;
 using Items;
+using LevelData.LootTable;
 using UnityEngine;
+using Utils;
+using Quaternion = UnityEngine.Quaternion;
+using Random = UnityEngine.Random;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 namespace Entities
 {
@@ -15,6 +25,11 @@ namespace Entities
 
         public bool dropsAfterDeath;
         public float dropChance;
+
+        protected Vector3 targetPosition;
+        protected float moveSpeed;
+
+        protected bool movingToPoint;
 
         public ProgressBarController progressBarController;
 
@@ -43,7 +58,8 @@ namespace Entities
         private void DropItem()
         {
             var item = SelectItemToDrop();
-            Instantiate(item, transform.position, Quaternion.identity);
+            if (item != null)
+                Instantiate(item, transform.position, Quaternion.identity);
         }
 
         private Item SelectItemToDrop()
@@ -55,9 +71,43 @@ namespace Entities
             }
 
             var lootTable = GameManager.LootTables[entityName];
-            var possibleBoosters = lootTable.boosters.Where(b => Random.value <= b.chance).ToList();
-            var booster = possibleBoosters[Random.Range(0, possibleBoosters.Count)];
+            var normalizedItems = NormalizeItemsChances(lootTable);
+            var possibleItems = SelectPossibleItem(normalizedItems, Random.value);
+
+            var booster = possibleItems[Random.Range(0, possibleItems.Count)];
+            
             return GameManager.ItemPrefabs[booster.name];
+        }
+
+        private List<BoosterData> NormalizeItemsChances(LootTable lootTable)
+        {
+            var normalizedChances = lootTable.boosters.Normalize(b => b.chance).ToList();
+            var normalizedBoosters = new List<BoosterData>();
+
+            for (var i = 0; i < normalizedChances.Count; i++)
+            {
+                var boosterData = lootTable.boosters[i];
+                var chance = normalizedChances[i] / normalizedChances.Sum();
+                normalizedBoosters.Add(new BoosterData {name = boosterData.name, chance = chance});
+            }
+
+            return normalizedBoosters;
+        }
+
+        private List<BoosterData> SelectPossibleItem(List<BoosterData> boosters, float chance)
+        {
+            var possibleBoosters = new List<BoosterData>();
+
+            boosters = boosters.OrderBy(b => b.chance).ToList();
+            
+            for (var i = 0; i < boosters.Count; i++)
+            {
+                var chanceOfBooster = boosters.Take(i).Select(b => b.chance).Sum() + boosters[i].chance;
+                if (chanceOfBooster >= chance)
+                    possibleBoosters.Add(boosters[i]);
+            }
+
+            return possibleBoosters;
         }
 
         public virtual void Die()
@@ -66,7 +116,6 @@ namespace Entities
                 DropItem();
             Destroy(gameObject);
             OnObjectDestroy?.Invoke(GetInstanceID());
-         
         }
 
         public void SetMaxHealth(float value, bool resetCurrentHealth = false)
@@ -74,6 +123,26 @@ namespace Entities
             maxHealth = value;
             if (resetCurrentHealth)
                 health = maxHealth;
+        }
+
+        private void Update()
+        {
+            UpdatePosition();
+        }
+
+        protected virtual void UpdatePosition()
+        {
+            if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0) && movingToPoint)
+                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+            else
+                movingToPoint = true;
+        }
+
+        public virtual void MoveTo(Vector2 targetPos, float speed)
+        {
+            movingToPoint = true;
+            targetPosition = targetPos;
+            moveSpeed = speed;
         }
     }
 }

@@ -58,7 +58,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "spawningDelay": 0,
             "waveElements": [
                 {
