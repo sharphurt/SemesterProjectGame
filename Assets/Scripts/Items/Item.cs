@@ -21,6 +21,7 @@ namespace Items
 
         public abstract void PickUp(Player picker);
 
-        public void InstantItem(Transform position) => Instantiate(gameObject, position);
+        private void OnBecameInvisible() => Destroy(gameObject);
+
     }
 }

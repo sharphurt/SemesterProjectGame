@@ -75,7 +75,7 @@ namespace Entities
             var possibleItems = SelectPossibleItem(normalizedItems, Random.value);
 
             var booster = possibleItems[Random.Range(0, possibleItems.Count)];
-            
+
             return GameManager.ItemPrefabs[booster.name];
         }
 
@@ -94,12 +94,14 @@ namespace Entities
             return normalizedBoosters;
         }
 
+        private void OnBecameInvisible() => Destroy(gameObject);
+
         private List<BoosterData> SelectPossibleItem(List<BoosterData> boosters, float chance)
         {
             var possibleBoosters = new List<BoosterData>();
 
             boosters = boosters.OrderBy(b => b.chance).ToList();
-            
+
             for (var i = 0; i < boosters.Count; i++)
             {
                 var chanceOfBooster = boosters.Take(i).Select(b => b.chance).Sum() + boosters[i].chance;

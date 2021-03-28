@@ -40,7 +40,7 @@ namespace Entities
                     joystick.Horizontal * acceleration + Input.GetAxis("Horizontal") * acceleration,
                     joystick.Vertical * acceleration + Input.GetAxis("Vertical") * acceleration);
 
-                rb.rotation = Mathf.Asin(joystick.Horizontal * joystick.Vertical) * -Mathf.PI * acceleration * 2;
+                rb.rotation = Mathf.Asin(joystick.Horizontal /** joystick.Vertical*/) * -Mathf.PI * acceleration * 2;
             }
         }
 

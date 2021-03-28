@@ -13,7 +13,7 @@
     },
     "waves": [
         {
-            "repeats": 0,
+            "repeats": 10,
             "waveElements": [
                 {
                     "prefab": "Zombie",
