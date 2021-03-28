@@ -9,7 +9,7 @@ namespace Entities
 
         public float acceleration;
         private Rigidbody2D rb;
-        private BoxCollider2D boxCollider2D;
+        private Collider2D collider2D;
 
         private float count;
         private Vector2 middlePoint;
@@ -22,14 +22,14 @@ namespace Entities
         public override void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            boxCollider2D = GetComponent<BoxCollider2D>();
+            collider2D = GetComponent<Collider2D>();
             base.Start();
         }
 
         void FixedUpdate()
         {
             var screenEdges = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            var boundsHalfSize = boxCollider2D.bounds.size / 2f;
+            var boundsHalfSize = collider2D.bounds.size / 2f;
             rb.position = new Vector2(
                 Mathf.Clamp(rb.position.x, -screenEdges.x + boundsHalfSize.x, screenEdges.x - boundsHalfSize.x),
                 Mathf.Clamp(rb.position.y, -screenEdges.y + boundsHalfSize.y, screenEdges.y - boundsHalfSize.y));

@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "RZ8MA398Z0F",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 9099,
+        "processId": 1255,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -270,6 +270,12 @@
             "deviceId": "RZ8MA398Z0F",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 9099,
+            "exited": false
+        },
+        {
+            "deviceId": "RZ8MA398Z0F",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 1255,
             "exited": false
         }
     ],
