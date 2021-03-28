@@ -26,10 +26,12 @@ namespace Entities
         public bool dropsAfterDeath;
         public float dropChance;
 
-        protected Vector3 targetPosition;
-        protected float moveSpeed;
+        protected Vector3 TargetPosition;
+        protected float MoveSpeed;
 
-        protected bool movingToPoint;
+        protected bool MovingToPoint;
+        
+        public GameObject deathEffect;
 
         public ProgressBarController progressBarController;
 
@@ -117,6 +119,10 @@ namespace Entities
             if (dropsAfterDeath && Random.value <= dropChance)
                 DropItem();
             Destroy(gameObject);
+            
+            if (deathEffect != null)
+                Instantiate(deathEffect, transform.position, transform.rotation);
+
             OnObjectDestroy?.Invoke(GetInstanceID());
         }
 
@@ -134,17 +140,17 @@ namespace Entities
 
         protected virtual void UpdatePosition()
         {
-            if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0) && movingToPoint)
-                transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+            if (transform.position != new Vector3(TargetPosition.x, TargetPosition.y, 0) && MovingToPoint)
+                transform.position = Vector3.Lerp(transform.position, TargetPosition, Time.deltaTime * MoveSpeed);
             else
-                movingToPoint = true;
+                MovingToPoint = true;
         }
 
         public virtual void MoveTo(Vector2 targetPos, float speed)
         {
-            movingToPoint = true;
-            targetPosition = targetPos;
-            moveSpeed = speed;
+            MovingToPoint = true;
+            TargetPosition = targetPos;
+            MoveSpeed = speed;
         }
     }
 }
