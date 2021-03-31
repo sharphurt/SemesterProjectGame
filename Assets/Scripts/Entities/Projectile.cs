@@ -4,7 +4,7 @@ namespace Entities
 {
     public class Projectile : MonoBehaviour
     {
-        public int damage;
+        [HideInInspector] public float damage;
         
         [HideInInspector] public Collider2D shooterCollider;
         [HideInInspector] public string shooterTag;

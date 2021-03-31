@@ -16,7 +16,11 @@ namespace Entities
         public float bulletSpeed;
         public float delay;
 
-        private void Start() => StartCoroutine(ShootCoroutine());
+        private void Start()
+        {
+            StartCoroutine(ShootCoroutine());
+            bullet.damage = damage;
+        }
 
         private IEnumerator ShootCoroutine()
         {

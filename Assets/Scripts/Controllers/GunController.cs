@@ -13,14 +13,16 @@ namespace Controllers
 
         [HideInInspector] public Collider2D shooterCollider;
         [HideInInspector] public string shooterTag;
+        [HideInInspector] public float damage;
 
-        public abstract void Shoot();
+        protected abstract void Shoot();
 
         public virtual void Start()
         {
             var parent = gameObject.transform.parent.gameObject;
             shooterCollider = parent.GetComponent<Collider2D>();
             shooterTag = parent.tag;
+            damage = parent.GetComponent<Entity>().damage;
 
             ShootingAbility = GetComponentInParent<ShootingAbility>();
             ShootingAbility.OnModifierAdded += ModifierChangedHandler;

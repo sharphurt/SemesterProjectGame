@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Numerics;
-using System.Text;
 using Abilities;
 using Controllers;
 using Items;
@@ -26,6 +23,8 @@ namespace Entities
         public bool dropsAfterDeath;
         public float dropChance;
 
+        public float damage;
+
         protected Vector3 TargetPosition;
         protected float MoveSpeed;
 
@@ -44,11 +43,10 @@ namespace Entities
         public virtual void Start()
         {
             gettingDamageAbility = GetComponent<GettingDamageAbility>();
-
             progressBarController.SetHealthBar(health, maxHealth, true);
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(float damage)
         {
             gettingDamageAbility.Damage = damage;
             health -= gettingDamageAbility.Damage;
@@ -132,11 +130,8 @@ namespace Entities
             if (resetCurrentHealth)
                 health = maxHealth;
         }
-
-        private void Update()
-        {
-            UpdatePosition();
-        }
+        
+        private void Update() => UpdatePosition();
 
         protected virtual void UpdatePosition()
         {

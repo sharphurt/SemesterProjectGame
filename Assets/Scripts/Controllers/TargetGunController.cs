@@ -22,12 +22,13 @@ namespace Controllers
             var instance = Instantiate(ShootingAbility.bullet, transform.position, angle);
             var rb = instance.GetComponent<Rigidbody2D>();
             rb.velocity = directionalVector * ShootingAbility.speed;
+            instance.damage = damage;
             instance.shooterCollider = shooterCollider;
             instance.shooterTag = shooterTag;
         }
 
 
-        public override void Shoot()
+        protected override void Shoot()
         {
             var target = targetSelectorController.FindClosestTarget();
             if (target != null)

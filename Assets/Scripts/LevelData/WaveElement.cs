@@ -10,6 +10,7 @@ namespace LevelData
         public LocationMethod locationMethod;
         public Vector2 position;
         public float hp;
+        public float damage;
         public float spawningDelay;
     }
 }
