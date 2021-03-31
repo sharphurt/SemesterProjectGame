@@ -5156,6 +5156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shooterCollider: {fileID: 0}
   shooterTag: 
+  damage: 0
 --- !u!114 &667113418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5621,6 +5622,7 @@ MonoBehaviour:
   entityName: 
   dropsAfterDeath: 0
   dropChance: 0
+  damage: 100
   deathEffect: {fileID: 0}
   progressBarController: {fileID: 452426786}
   joystick: {fileID: 1857121054}
