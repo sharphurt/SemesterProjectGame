@@ -55,6 +55,12 @@ namespace Entities
                 Die();
         }
 
+        public void Heal(float value)
+        {
+            health = Mathf.Clamp(health + value, 0, maxHealth);
+            progressBarController.SetHealthBar(health, maxHealth, false);
+        }
+
         private void DropItem()
         {
             var item = SelectItemToDrop();

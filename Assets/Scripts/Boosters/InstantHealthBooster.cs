@@ -10,7 +10,7 @@ namespace Boosters
         
         public override void PickUp(Player picker)
         {
-            picker.health = Mathf.Clamp(picker.health + picker.maxHealth * value, 0, picker.maxHealth);
+            picker.Heal(picker.maxHealth * value);
         }
     }
 }
