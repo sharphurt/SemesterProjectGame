@@ -1,0 +1,338 @@
+﻿{
+    "levelEnd": {
+        "delay": 10,
+        "prefab": "Castle",
+        "spawnPosition": {
+            "x": 0.0,
+            "y": 10
+        },
+        "targetPosition": {
+            "x": 0.0,
+            "y": 2.0
+        }
+    },
+    "waves": [
+        {
+            "repeats": 1,
+            "waveElements": [
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.0,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                }
+            ]
+        },
+		{
+            "repeats": 1,
+            "waveElements": [
+				{
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0.5
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "spawningDelay": 0,
+            "waveElements": [
+                {
+                    "prefab": "Demo8TrapZombie",
+                    "locationMethod": 1,
+                    "hp": 250,
+                    "damage": 10,
+                    "position": {
+                        "x": 0.0,
+                        "y": 3.8
+                    }
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "spawningDelay": 2,
+            "waveElements": [
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                },
+                {
+                    "prefab": "Demo8TrapZombie",
+                    "locationMethod": 1,
+                    "hp": 250,
+                    "damage": 10,
+                    "position": {
+                        "x": 0.0,
+                        "y": 3.8
+                    },
+                    "spawningDelay": 4
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "waveElements": [
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 2
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 2
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.7,
+                        "y": 5
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 8
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -0.6,
+                        "y": 5
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.7,
+                        "y": 5
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 2
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.6,
+                        "y": 5
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "spawningDelay": 3,
+            "waveElements": [
+                {
+                    "prefab": "Demo8TrapZombie",
+                    "locationMethod": 1,
+                    "hp": 250,
+                    "damage": 10,
+                    "position": {
+                        "x": -1.3,
+                        "y": 3.8
+                    }
+                },
+                {
+                    "prefab": "Demo8TrapZombie",
+                    "locationMethod": 1,
+                    "hp": 250,
+                    "damage": 10,
+                    "position": {
+                        "x": 1.3,
+                        "y": 3.8
+                    }
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "spawningDelay": 4,
+            "waveElements": [
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 3
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.7,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 2
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.6,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 1
+                },
+                {
+                    "prefab": "Demo8TrapZombie",
+                    "locationMethod": 1,
+                    "hp": 250,
+                    "damage": 10,
+                    "position": {
+                        "x": 0.0,
+                        "y": 5
+                    },
+                    "spawningDelay": 5
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 1.4,
+                        "y": 5.2
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 2
+                },
+                {
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": -1.4,
+                        "y": 5.2
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                }
+            ]
+        }
+    ]
+}
