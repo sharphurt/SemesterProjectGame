@@ -1,9 +1,9 @@
 {
-    "m_SelectedDeviceId": "RZ8MA398Z0F",
+    "m_SelectedDeviceId": "b320b76b",
     "m_SelectedPackage": {
-        "deviceId": "RZ8MA398Z0F",
+        "deviceId": "b320b76b",
         "name": "com.DefaultCompany.com.unity.template.mobile2D",
-        "processId": 14789,
+        "processId": 10861,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -330,6 +330,72 @@
             "deviceId": "RZ8MA398Z0F",
             "name": "com.DefaultCompany.com.unity.template.mobile2D",
             "processId": 14789,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 22947,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 27690,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 28312,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 29943,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 31379,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 32257,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 32761,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 2060,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 3686,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 9737,
+            "exited": false
+        },
+        {
+            "deviceId": "b320b76b",
+            "name": "com.DefaultCompany.com.unity.template.mobile2D",
+            "processId": 10861,
             "exited": false
         }
     ],
