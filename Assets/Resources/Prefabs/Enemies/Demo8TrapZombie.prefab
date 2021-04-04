@@ -154,7 +154,7 @@ MonoBehaviour:
   dropsAfterDeath: 0
   dropChance: 0.25
   damage: 0
-  deathEffect: {fileID: 0}
+  deathEffect: {fileID: 3836939733414368666, guid: a319d1d2018d89948adf076895d67118, type: 3}
   progressBarController: {fileID: 8877003707726837167}
 --- !u!114 &6905502564837150811
 MonoBehaviour:

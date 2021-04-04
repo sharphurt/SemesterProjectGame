@@ -122,5 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eeeaca6a77740ec9e21cb5ea1cdbc80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickEffect: {fileID: 2029207891403620557, guid: e16fbfc05cef60d4d9a4952c04e20b3e, type: 3}
   duration: 10
   value: 10
