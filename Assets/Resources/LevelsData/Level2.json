@@ -16,6 +16,43 @@
             "repeats": 1,
             "waveElements": [
                 {
+                    "prefab": "Partisan",
+                    "spawnPosition": {
+                        "x": 6.0,
+                        "y": 1.0
+                    },
+                    "position": {
+                        "x": 1.0,
+                        "y": 8.0
+                    },
+                    "moveByArc": 1,
+                    "hp": 100,
+                    "damage": 10,
+                    "movingSpeed": 0.1,
+                    "spawningDelay": 0
+                },
+                {
+                    "prefab": "Partisan",
+                    "spawnPosition": {
+                        "x": -6.0,
+                        "y": 1.0
+                    },
+                    "position": {
+                        "x": -1.0,
+                        "y": 8
+                    },
+                    "moveByArc": 1,
+                    "hp": 100,
+                    "damage": 10,
+                    "movingSpeed": 0.1,
+                    "spawningDelay": 0
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "waveElements": [
+                {
                     "prefab": "DemoZombie",
                     "locationMethod": 1,
                     "position": {

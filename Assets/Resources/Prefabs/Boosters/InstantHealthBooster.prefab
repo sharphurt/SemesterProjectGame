@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2733944337874083459}
   m_Layer: 0
   m_Name: InstantHealthBooster
-  m_TagString: Untagged
+  m_TagString: Boost
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -96,8 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d332fa57822043a4fb4ee1295ff7d355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  value: 0.5
   pickEffect: {fileID: 2029207891403620557, guid: be9238b42ba9c0742aca5445276f9179, type: 3}
+  value: 0.5
 --- !u!61 &2733944337874083459
 BoxCollider2D:
   m_ObjectHideFlags: 0

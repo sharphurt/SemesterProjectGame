@@ -18,17 +18,23 @@ namespace Entities
         public float health;
         public float maxHealth;
 
+        [HideInInspector]
         public string entityName;
 
         public bool dropsAfterDeath;
         public float dropChance;
 
+        [HideInInspector]
         public float damage;
 
-        protected Vector3 TargetPosition;
-        protected float MoveSpeed;
+        private Vector3 targetPosition;
+        private float moveSpeed;
+        private bool movingToPoint;
 
-        protected bool MovingToPoint;
+        private bool moveByArc;
+        private float count;
+        private Vector2 middlePoint;
+        private Vector2 startPosition;
         
         public GameObject deathEffect;
 
@@ -100,7 +106,11 @@ namespace Entities
             return normalizedBoosters;
         }
 
-        private void OnBecameInvisible() => Destroy(gameObject);
+        private void OnBecameInvisible()
+        {
+            Destroy(gameObject);
+            OnObjectDestroy?.Invoke(GetInstanceID());
+        }
 
         private List<BoosterData> SelectPossibleItem(List<BoosterData> boosters, float chance)
         {
@@ -139,19 +149,43 @@ namespace Entities
         
         private void Update() => UpdatePosition();
 
-        protected virtual void UpdatePosition()
+        private void UpdatePosition()
         {
-            if (transform.position != new Vector3(TargetPosition.x, TargetPosition.y, 0) && MovingToPoint)
-                transform.position = Vector3.Lerp(transform.position, TargetPosition, Time.deltaTime * MoveSpeed);
+            if (moveByArc)
+            {
+                if (count < 1.0f && movingToPoint)
+                {
+                    count += moveSpeed * Time.deltaTime;
+
+                    Vector3 m1 = Vector2.Lerp(startPosition, middlePoint, count);
+                    Vector3 m2 = Vector2.Lerp(middlePoint, targetPosition, count);
+                    transform.position = Vector2.Lerp(m1, m2, count);
+                    var rotation = Vector2Utils.CalculateFacingToTarget(m1, m2).angle;
+                    transform.rotation = rotation;
+                }
+            }
             else
-                MovingToPoint = true;
+            {
+                if (transform.position != new Vector3(targetPosition.x, targetPosition.y, 0) && movingToPoint)
+                    transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * moveSpeed);
+                else
+                    movingToPoint = true;
+            }
         }
 
-        public virtual void MoveTo(Vector2 targetPos, float speed)
+        public void MoveTo(Vector2 targetPos, float speed, bool byArc)
         {
-            MovingToPoint = true;
-            TargetPosition = targetPos;
-            MoveSpeed = speed;
+            movingToPoint = true;
+            targetPosition = targetPos;
+            moveSpeed = speed;
+            moveByArc = byArc;
+            
+            if (byArc)
+            {
+                startPosition = transform.position;
+                middlePoint = startPosition + (targetPos - startPosition) / 2 +
+                              Vector2.left * ((startPosition.x - targetPos.x) * 0.6f);
+            }
         }
     }
 }

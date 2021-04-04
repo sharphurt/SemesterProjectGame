@@ -13,8 +13,6 @@ namespace Spawning
         public Bounds spawningArea;
 
         [HideInInspector] public Bounds destinationArea;
-        [HideInInspector] public uint livingEnemiesLimit;
-        [HideInInspector] public uint spawningAttempts;
 
         public float movingToDestinationSpeed;
 
@@ -23,8 +21,6 @@ namespace Spawning
         public event WavesAreOverHandler OnWavesOver;
 
         private readonly List<Enemy> currentWave = new List<Enemy>();
-
-        public GameObject booster;
         
         public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
 
@@ -48,22 +44,19 @@ namespace Spawning
             {
                 yield return new WaitForSeconds(e.spawningDelay);
 
-                var instance = SpawnEnemy(GameManager.EnemyPrefabs[e.prefab]);
+                var instance = SpawnEnemy(GameManager.EnemyPrefabs[e.prefab], e.spawnPosition);
                 instance.SetMaxHealth(e.hp, true);
                 instance.damage = e.damage;
-                if (e.locationMethod == LocationMethod.Specified)
-                    instance.MoveTo(e.position, movingToDestinationSpeed);
-                else
-                {
-                    var pos = RandomUtils.RandomPointInBounds(destinationArea);
-                    instance.MoveTo(pos, movingToDestinationSpeed);
-                }
+                instance.MoveTo(e.position, e.movingSpeed != 0f ? e.movingSpeed : movingToDestinationSpeed, e.moveByArc);
             }
         }
 
-        private Enemy SpawnEnemy(Enemy enemy)
+        private Enemy SpawnEnemy(Enemy enemy, Vector2 spawnPoint)
         {
-            var point = RandomUtils.RandomPointInBounds(spawningArea);
+            var point = spawnPoint;
+            if (spawnPoint == Vector2.zero)
+                point = RandomUtils.RandomPointInBounds(spawningArea);
+            
             var instance = Instantiate(enemy, point, Quaternion.identity);
             instance.entityName = enemy.name;
             instance.OnObjectDestroy += id => currentWave.RemoveAll(e => e.GetInstanceID() == id);
