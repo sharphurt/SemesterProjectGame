@@ -1,0 +1,12 @@
+{
+    "boosters": [
+        {
+            "name": "ShootingSpeedBooster",
+            "chance": 0.5
+        },
+        {
+            "name": "InvincibleBooster",
+            "chance": 0.1
+        }
+    ]
+}

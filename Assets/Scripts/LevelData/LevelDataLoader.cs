@@ -1,22 +1,16 @@
 ﻿using UnityEngine;
+using Utils;
 
 namespace LevelData
 {
-    public class LevelDataLoader : MonoBehaviour
+    public static class LevelDataLoader
     {
-        [HideInInspector] public LevelData levelData;
-
-        private void Start() => LoadLevelData();
-
-        private void LoadLevelData()
+        public static LevelData LoadLevelData(string sceneName)
         {
-            if (JsonParser.TryParse<LevelData>($"LevelsData/{gameObject.scene.name}", out var data))
-                levelData = data;
-            else
-            {
-                Debug.LogError($"Level data isn't specified for level \"{gameObject.scene.name}\"");
-                levelData = new LevelData();
-            }
+            if (JsonParser.TryParse<LevelData>($"LevelsData/{sceneName}", out var data))
+                return data;
+            Debug.LogError($"Level data isn't specified for level \"{sceneName}\"");
+            return new LevelData();
         }
     }
 }

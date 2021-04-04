@@ -1,54 +1,69 @@
+﻿using System;
 using System.Collections;
+using Abilities;
+using Entities;
+using Modifiers;
 using UnityEngine;
 
 namespace Controllers
 {
-    public class GunController : MonoBehaviour
+    public abstract class GunController : MonoBehaviour
     {
-        public float shootingPeriod;
-        public BulletController bulletController;
-        public float power;
+        protected ShootingAbility ShootingAbility;
 
-        private GameObject shooter;
-        private TargetSelectorController targetSelectorController;
-        private Transform firePoint;
+        [HideInInspector] public Collider2D shooterCollider;
+        [HideInInspector] public string shooterTag;
+        [HideInInspector] public float damage;
 
-        private void Start()
+        protected abstract void Shoot();
+
+        public virtual void Start()
         {
-            shooter = gameObject.transform.parent.gameObject;
-            firePoint = GetComponent<Transform>();
-            targetSelectorController = GetComponent<TargetSelectorController>();
-            StartCoroutine(nameof(DoTaskPeriodically));
+            var parent = gameObject.transform.parent.gameObject;
+            shooterCollider = parent.GetComponent<Collider2D>();
+            shooterTag = parent.tag;
+            damage = parent.GetComponent<Entity>().damage;
+
+            ShootingAbility = GetComponentInParent<ShootingAbility>();
+            ShootingAbility.OnModifierAdded += ModifierChangedHandler;
+            ShootingAbility.OnModifierRemoved += ModifierChangedHandler;
+
+            if (ShootingAbility == null)
+                Debug.LogError("Using Gun without Shooting ability on parent");
+
+            StartCoroutine(PeriodicallyShootCoroutine(ShootingAbility.isInfinityShooting, ShootingAbility.shootsCount));
         }
 
-        private void Shoot(Transform tg)
+        private IEnumerator PeriodicallyShootCoroutine(bool isInf, uint repeats)
         {
-            var (facing, directionalVector) = CalculateFacingToTarget(tg);
-            var instantiated = Instantiate(bulletController, firePoint.position, facing);
-            var rb = instantiated.GetComponent<Rigidbody2D>();
-            rb.velocity = directionalVector * power;
-            instantiated.shooterCollider = shooter.GetComponent<Collider2D>();
-            instantiated.shooterTag = shooter.tag;
-        }
+            yield return new WaitForSeconds(ShootingAbility.startDelay);
+            if (isInf)
+                while (true)
+                {
+                    Shoot();
+                    yield return new WaitForSeconds(ShootingAbility.ShootingPeriod);
+                }
 
-        private (Quaternion facingAngle, Vector2 directionalVector) CalculateFacingToTarget(Transform tg)
-        {
-            var position = firePoint.position;
-            var directionalVector = (tg.position - position).normalized;
-            var angle = Quaternion.LookRotation(directionalVector);
-            angle.x = angle.y = 0;
-            return (angle, directionalVector);
-        }
-
-        public IEnumerator DoTaskPeriodically()
-        {
-            while (true)
+            for (var i = 0; i < repeats; i++)
             {
-                var target = targetSelectorController.FindClosestTarget();
-                if (target != null)
-                    Shoot(target.transform);
-                yield return new WaitForSeconds(shootingPeriod);
+                Shoot();
+                yield return new WaitForSeconds(ShootingAbility.ShootingPeriod);
             }
+        }
+
+        private void ModifierChangedHandler(Modifier modifier)
+        {
+            if (modifier.FieldName != "ShootingPeriod")
+                return;
+            StopAllCoroutines();
+            StartCoroutine(PeriodicallyShootCoroutine(ShootingAbility.isInfinityShooting,
+                ShootingAbility.shootsCount));
+        }
+
+        private void OnDestroy()
+        {
+            ShootingAbility.OnModifierAdded -= ModifierChangedHandler;
+            ShootingAbility.OnModifierRemoved -= ModifierChangedHandler;
         }
     }
 }
