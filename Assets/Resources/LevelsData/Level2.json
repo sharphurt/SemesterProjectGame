@@ -16,7 +16,23 @@
             "repeats": 1,
             "waveElements": [
                 {
-                    "prefab": "Partisan",
+                    "prefab": "DemoZombie",
+                    "locationMethod": 1,
+                    "position": {
+                        "x": 0.0,
+                        "y": 3.8
+                    },
+                    "hp": 100,
+                    "damage": 10,
+                    "spawningDelay": 0
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "waveElements": [
+                {
+                    "prefab": "DemoPartisan",
                     "spawnPosition": {
                         "x": 6.0,
                         "y": 1.0
@@ -32,7 +48,7 @@
                     "spawningDelay": 0
                 },
                 {
-                    "prefab": "Partisan",
+                    "prefab": "DemoPartisan",
                     "spawnPosition": {
                         "x": -6.0,
                         "y": 1.0
@@ -45,22 +61,6 @@
                     "hp": 100,
                     "damage": 10,
                     "movingSpeed": 0.1,
-                    "spawningDelay": 0
-                }
-            ]
-        },
-        {
-            "repeats": 1,
-            "waveElements": [
-                {
-                    "prefab": "DemoZombie",
-                    "locationMethod": 1,
-                    "position": {
-                        "x": 0.0,
-                        "y": 3.8
-                    },
-                    "hp": 100,
-                    "damage": 10,
                     "spawningDelay": 0
                 }
             ]
@@ -166,6 +166,27 @@
                         "y": 3.8
                     },
                     "spawningDelay": 4
+                }
+            ]
+        },
+        {
+            "repeats": 1,
+            "waveElements": [
+                {
+                    "prefab": "DemoPartisan2",
+                    "spawnPosition": {
+                        "x": 6.0,
+                        "y": 1.0
+                    },
+                    "position": {
+                        "x": 1.0,
+                        "y": 8.0
+                    },
+                    "moveByArc": 1,
+                    "hp": 100,
+                    "damage": 10,
+                    "movingSpeed": 0.1,
+                    "spawningDelay": 2
                 }
             ]
         },
