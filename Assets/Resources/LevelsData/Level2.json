@@ -1,14 +1,14 @@
 ﻿{
     "levelEnd": {
-        "delay": 10,
+        "delay": 3,
         "prefab": "Castle",
         "spawnPosition": {
             "x": 0.0,
-            "y": 10
+            "y": 11.5
         },
         "targetPosition": {
             "x": 0.0,
-            "y": 2.0
+            "y": 6.0
         }
     },
     "waves": [
@@ -27,7 +27,7 @@
                     },
                     "moveByArc": 1,
                     "hp": 100,
-                    "damage": 10,
+                    "damage": 0,
                     "movingSpeed": 0.1,
                     "spawningDelay": 0
                 },
@@ -43,14 +43,14 @@
                     },
                     "moveByArc": 1,
                     "hp": 100,
-                    "damage": 10,
+                    "damage": 0,
                     "movingSpeed": 0.1,
                     "spawningDelay": 0
                 }
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "waveElements": [
                 {
                     "prefab": "DemoZombie",
@@ -66,7 +66,7 @@
             ]
         },
 		{
-            "repeats": 1,
+            "repeats": 0,
             "waveElements": [
 				{
                     "prefab": "DemoZombie",
@@ -115,7 +115,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "spawningDelay": 0,
             "waveElements": [
                 {
@@ -131,7 +131,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "spawningDelay": 2,
             "waveElements": [
                 {
@@ -170,7 +170,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "waveElements": [
                 {
                     "prefab": "DemoZombie",
@@ -263,7 +263,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "spawningDelay": 3,
             "waveElements": [
                 {
@@ -289,7 +289,7 @@
             ]
         },
         {
-            "repeats": 1,
+            "repeats": 0,
             "spawningDelay": 4,
             "waveElements": [
                 {

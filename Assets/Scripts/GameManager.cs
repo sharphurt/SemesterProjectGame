@@ -82,7 +82,7 @@ public class GameManager : MonoBehaviour
         var instance = Instantiate(LevelEndPointPrefab, LevelData.levelEnd.spawnPosition, Quaternion.identity);
         instance.OnGameWin += GameWinHandler;
         player.DisableJoystickControl();
-        player.MoveTo(instance.GetComponentInChildren<Transform>().position, 0.3f, true);
+        player.MoveTo(instance.GetComponentInChildren<Transform>().position, 0.1f, true);
         isFinishing = true;
 
     }
