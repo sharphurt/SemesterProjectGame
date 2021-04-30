@@ -1,14 +1,14 @@
 ﻿{
     "levelEnd": {
-        "delay": 10,
+        "delay": 3,
         "prefab": "Castle",
         "spawnPosition": {
             "x": 0.0,
-            "y": 10
+            "y": 11.5
         },
         "targetPosition": {
             "x": 0.0,
-            "y": 2.0
+            "y": 6.0
         }
     },
     "waves": [
