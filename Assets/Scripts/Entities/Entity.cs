@@ -95,10 +95,10 @@ namespace Entities
         private void DropParts()
         {
             var partsCount = Random.Range(1, GameManager.LootTables[entityName].partsMaxCount[gameObject.scene.name]);
-            /*for (var i = 0; i < partsCount; i++)
-            {*/
-                coinsCollector.StartCoinMove(transform.position);
-            //}
+            for (var i = 0; i < partsCount; i++)
+            {
+                coinsCollector.StartCoinMove(transform.position, i * 0.1f);
+            }
         }
 
         private Item SelectBoosterToDrop()

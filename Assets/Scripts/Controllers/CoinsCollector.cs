@@ -17,29 +17,30 @@ namespace Controllers
             gameManager = GetComponent<GameManager>();
         }
 
-        public void StartCoinMove(Vector3 initial)
+        public void StartCoinMove(Vector3 initial, float delay)
         {
             var targetPos =
                 Camera.main.ScreenToWorldPoint(new Vector3(target.position.x, target.position.y));
 
-            var coin = Instantiate(coinPrefab, new Vector2(transform.position.x, transform.position.y),
-                Quaternion.identity);
-            StartCoroutine(MoveCoin(coin.transform, initial, targetPos));
+            StartCoroutine(MoveCoin(initial, targetPos, delay));
         }
 
-        private IEnumerator MoveCoin(Transform obj, Vector2 start, Vector2 end)
+        private IEnumerator MoveCoin(Vector2 start, Vector2 end, float delay)
         {
+
             float time = 0;
+            yield return new WaitForSeconds(delay);
+            var coin = Instantiate(coinPrefab, start, Quaternion.identity);
 
             while (time < 1)
             {
                 time += speed * Time.deltaTime;
-                obj.position = Vector2.Lerp(start, end, time);
+                coin.transform.position = Vector2.Lerp(start, end, time);
                 yield return new WaitForEndOfFrame();
             }
 
             gameManager.Score++;
-            Destroy(obj.gameObject);
+            Destroy(coin.gameObject);
         }
     }
 }

@@ -5578,7 +5578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd128479c64ba7c42b97318b4231c0d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 2
   target: {fileID: 1828317436}
   coinPrefab: {fileID: 3822388556546931813, guid: 703085d3c2a30be4c9a7afcda2a71dcf, type: 3}
 --- !u!1001 &709271426
@@ -5755,10 +5755,10 @@ RectTransform:
   m_Father: {fileID: 832541059}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 33.14109, y: 15.484299}
-  m_SizeDelta: {x: 66.2822, y: 30.9685}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 33.14109, y: -32.44771}
+  m_SizeDelta: {x: 66.2822, y: 64.8954}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &712831721
 CanvasRenderer:
