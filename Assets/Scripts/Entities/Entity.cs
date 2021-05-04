@@ -18,14 +18,13 @@ namespace Entities
         public float health;
         public float maxHealth;
 
-        [HideInInspector]
-        public string entityName;
+        [HideInInspector] public string entityName;
 
         public bool dropsAfterDeath;
-        public float dropChance;
+        public float boosterDropChance;
+        public float partsDropChance;
 
-        [HideInInspector]
-        public float damage;
+        [HideInInspector] public float damage;
 
         private Vector3 targetPosition;
         private float moveSpeed;
@@ -35,8 +34,10 @@ namespace Entities
         private float count;
         private Vector2 middlePoint;
         private Vector2 startPosition;
-        
+
         public GameObject deathEffect;
+
+        public CoinsCollector coinsCollector;
 
         public ProgressBarController progressBarController;
 
@@ -50,6 +51,7 @@ namespace Entities
         {
             gettingDamageAbility = GetComponent<GettingDamageAbility>();
             progressBarController.SetHealthBar(health, maxHealth, true);
+            coinsCollector = FindObjectOfType<CoinsCollector>();
         }
 
         public void TakeDamage(float damage)
@@ -67,14 +69,39 @@ namespace Entities
             progressBarController.SetHealthBar(health, maxHealth, false);
         }
 
-        private void DropItem()
+        public virtual void Die()
         {
-            var item = SelectItemToDrop();
+            if (dropsAfterDeath && Random.value <= boosterDropChance)
+                DropBooster();
+
+            if (dropsAfterDeath && Random.value <= partsDropChance)
+                DropParts();
+
+            Destroy(gameObject);
+
+            if (deathEffect != null)
+                Instantiate(deathEffect, transform.position, transform.rotation);
+
+            OnObjectDestroy?.Invoke(GetInstanceID());
+        }
+
+        private void DropBooster()
+        {
+            var item = SelectBoosterToDrop();
             if (item != null)
                 Instantiate(item, transform.position, Quaternion.identity);
         }
 
-        private Item SelectItemToDrop()
+        private void DropParts()
+        {
+            var partsCount = Random.Range(1, GameManager.LootTables[entityName].partsMaxCount[gameObject.scene.name]);
+            /*for (var i = 0; i < partsCount; i++)
+            {*/
+                coinsCollector.StartCoinMove(transform.position);
+            //}
+        }
+
+        private Item SelectBoosterToDrop()
         {
             if (!GameManager.LootTables.ContainsKey(entityName))
             {
@@ -83,15 +110,15 @@ namespace Entities
             }
 
             var lootTable = GameManager.LootTables[entityName];
-            var normalizedItems = NormalizeItemsChances(lootTable);
-            var possibleItems = SelectPossibleItem(normalizedItems, Random.value);
+            var normalizedItems = NormalizeBoosterChances(lootTable);
+            var possibleBooster = SelectPossibleBooster(normalizedItems, Random.value);
 
-            var booster = possibleItems[Random.Range(0, possibleItems.Count)];
+            var booster = possibleBooster[Random.Range(0, possibleBooster.Count)];
 
             return GameManager.ItemPrefabs[booster.name];
         }
 
-        private List<BoosterData> NormalizeItemsChances(LootTable lootTable)
+        private List<BoosterData> NormalizeBoosterChances(LootTable lootTable)
         {
             var normalizedChances = lootTable.boosters.Normalize(b => b.chance).ToList();
             var normalizedBoosters = new List<BoosterData>();
@@ -112,7 +139,7 @@ namespace Entities
             OnObjectDestroy?.Invoke(GetInstanceID());
         }
 
-        private List<BoosterData> SelectPossibleItem(List<BoosterData> boosters, float chance)
+        private List<BoosterData> SelectPossibleBooster(List<BoosterData> boosters, float chance)
         {
             var possibleBoosters = new List<BoosterData>();
 
@@ -128,17 +155,6 @@ namespace Entities
             return possibleBoosters;
         }
 
-        public virtual void Die()
-        {
-            if (dropsAfterDeath && Random.value <= dropChance)
-                DropItem();
-            Destroy(gameObject);
-            
-            if (deathEffect != null)
-                Instantiate(deathEffect, transform.position, transform.rotation);
-
-            OnObjectDestroy?.Invoke(GetInstanceID());
-        }
 
         public void SetMaxHealth(float value, bool resetCurrentHealth = false)
         {
@@ -146,7 +162,7 @@ namespace Entities
             if (resetCurrentHealth)
                 health = maxHealth;
         }
-        
+
         private void Update() => UpdatePosition();
 
         private void UpdatePosition()
@@ -179,7 +195,7 @@ namespace Entities
             targetPosition = targetPos;
             moveSpeed = speed;
             moveByArc = byArc;
-            
+
             if (byArc)
             {
                 startPosition = transform.position;

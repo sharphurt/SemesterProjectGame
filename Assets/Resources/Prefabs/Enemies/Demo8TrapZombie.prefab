@@ -151,10 +151,12 @@ MonoBehaviour:
   health: 100
   maxHealth: 100
   entityName: 
-  dropsAfterDeath: 0
-  dropChance: 0.25
+  dropsAfterDeath: 1
+  boosterDropChance: 0.1
+  partsDropChance: 1
   damage: 0
   deathEffect: {fileID: 3836939733414368666, guid: a319d1d2018d89948adf076895d67118, type: 3}
+  coinsCollector: {fileID: 0}
   progressBarController: {fileID: 8877003707726837167}
 --- !u!114 &6905502564837150811
 MonoBehaviour:

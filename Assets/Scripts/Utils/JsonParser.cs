@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
 namespace Utils
@@ -19,7 +20,7 @@ namespace Utils
             return false;
         }
 
-        public static T Parse<T>(string json) => JsonUtility.FromJson<T>(json.Replace("\uFEFF", ""));
+        public static T Parse<T>(string json) => JsonConvert.DeserializeObject<T>(json.Replace("\uFEFF", ""));
 
         public static IEnumerable<TextAsset> GetAllJsonFiles(string path)
         {

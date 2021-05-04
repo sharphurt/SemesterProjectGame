@@ -7,5 +7,6 @@ namespace LevelData.LootTable
     public class LootTable
     {
         public List<BoosterData> boosters;
+        public Dictionary<string, int> partsMaxCount;
     }
 }
