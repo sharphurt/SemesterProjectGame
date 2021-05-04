@@ -97,7 +97,8 @@ namespace Entities
             var partsCount = Random.Range(1, GameManager.LootTables[entityName].partsMaxCount[gameObject.scene.name]);
             for (var i = 0; i < partsCount; i++)
             {
-                coinsCollector.StartCoinMove(transform.position, i * 0.1f);
+                coinsCollector.StartCoinMove(transform.position,
+                    i * 0.1f / ((Mathf.Log10(partsCount) + 1) * partsCount / 5));
             }
         }
 
