@@ -241,7 +241,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 21300000, guid: 62d9f78d87a161a4093835c5d2ec7836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.36, y: 0.53}
   m_AdaptiveModeThreshold: 0.5
@@ -318,6 +318,7 @@ MonoBehaviour:
   deathEffect: {fileID: 3836939733414368666, guid: a319d1d2018d89948adf076895d67118, type: 3}
   coinsCollector: {fileID: 0}
   progressBarController: {fileID: 2802014715869994715}
+  isTarget: 1
 --- !u!114 &8601021506798585039
 MonoBehaviour:
   m_ObjectHideFlags: 0
