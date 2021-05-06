@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0.069}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 0, y: -0.4}
-  m_SizeDelta: {x: 0.4, y: 0.03}
+  m_AnchoredPosition: {x: 0, y: -4}
+  m_SizeDelta: {x: 3, y: 0.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &546260764165779244
 Canvas:
@@ -170,7 +170,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5190916929802328637}
   - component: {fileID: 5190916929802328638}
-  - component: {fileID: 5190916929802328639}
   - component: {fileID: 5190916929802328634}
   - component: {fileID: 5190916929802328635}
   - component: {fileID: 2464104947051192086}
@@ -192,7 +191,7 @@ Transform:
   m_GameObject: {fileID: 5190916929802328608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_Children:
   - {fileID: 5190916929257096117}
   - {fileID: 4969894255456506055}
@@ -239,7 +238,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 297761703447499198, guid: a36bd6ac2e687f44bade4678ead89cbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 62d9f78d87a161a4093835c5d2ec7836, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -250,25 +249,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &5190916929802328639
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5190916929802328608}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: affc25c27dcd9c84c85c93bf4a53561f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!50 &5190916929802328634
 Rigidbody2D:
   serializedVersion: 4
@@ -307,14 +287,14 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.36, y: 0.53}
+    oldSize: {x: 3, y: 5.6}
     newSize: {x: 0.36, y: 0.53}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36, y: 0.53}
+  m_Size: {x: 2.8712108, y: 5.628422}
   m_EdgeRadius: 0
 --- !u!114 &2464104947051192086
 MonoBehaviour:
@@ -332,9 +312,11 @@ MonoBehaviour:
   maxHealth: 100
   entityName: 
   dropsAfterDeath: 1
-  dropChance: 0.1
+  boosterDropChance: 0.1
+  partsDropChance: 1
   damage: 0
   deathEffect: {fileID: 3836939733414368666, guid: a319d1d2018d89948adf076895d67118, type: 3}
+  coinsCollector: {fileID: 0}
   progressBarController: {fileID: 2802014715869994715}
 --- !u!114 &8601021506798585039
 MonoBehaviour:

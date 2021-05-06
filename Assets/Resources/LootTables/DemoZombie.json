@@ -12,5 +12,9 @@
             "name": "InstantHealthBooster",
             "chance": 1
         }
-    ]
+    ],
+    "partsMaxCount": {
+        "Level1": 10,
+        "Level2": 1000
+    }
 }

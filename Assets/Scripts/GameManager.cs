@@ -9,6 +9,7 @@ using LevelData.LootTable;
 using Spawning;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Utils;
 
 public class GameManager : MonoBehaviour
@@ -26,8 +27,21 @@ public class GameManager : MonoBehaviour
 
     private Player player;
     private EntitySpawner entitySpawner;
+    public Text scoreText;
 
     private bool isFinishing;
+
+    private int _score;
+
+    public int Score
+    {
+        get => _score;
+        set
+        {
+            _score = value;
+            scoreText.text = value.ToString();
+        }
+    }
 
     private void Start()
     {
@@ -43,6 +57,7 @@ public class GameManager : MonoBehaviour
 
         EnemyPrefabs = LoadEnemyPrefabs();
         ItemPrefabs = LoadItems();
+
         LevelEndPointPrefab = Resources.Load<LevelEndPoint>($"Prefabs/LevelEndPoints/{LevelData.levelEnd.prefab}");
 
         player.OnPlayerDeath += PlayerDeathHandler;
@@ -58,13 +73,22 @@ public class GameManager : MonoBehaviour
             .Select(g => g.First().prefab)
             .ToDictionary(k => k, v => Resources.Load<Enemy>($"Prefabs/Enemies/{v}"));
 
-    private Dictionary<string, Item> LoadItems() =>
+    private Dictionary<string, Item> LoadBoosters() =>
         LootTables.Values
             .SelectMany(t => t.boosters)
             .GroupBy(b => b.name)
             .Select(n => n.First().name)
             .ToDictionary(k => k, v => Resources.Load<Item>($"Prefabs/Boosters/{v}"));
 
+    private (string, Item) LoadPartsItem() => ("Part", Resources.Load<Item>("Prefabs/Parts/Part"));
+
+    private Dictionary<string, Item> LoadItems()
+    {
+        var boosters = LoadBoosters();
+        var (name, item) = LoadPartsItem();
+        boosters.Add(name, item);
+        return boosters;
+    }
 
     private void PlayerDeathHandler(string killer) => SceneManager.LoadScene("MainMenu");
 
@@ -82,9 +106,8 @@ public class GameManager : MonoBehaviour
         var instance = Instantiate(LevelEndPointPrefab, LevelData.levelEnd.spawnPosition, Quaternion.identity);
         instance.OnGameWin += GameWinHandler;
         player.DisableJoystickControl();
-        player.MoveTo(instance.GetComponentInChildren<Transform>().position, 0.3f, true);
+        player.MoveTo(instance.GetComponentInChildren<Transform>().position, 0.1f, true);
         isFinishing = true;
-
     }
 
     private void GameWinHandler() => SceneManager.LoadScene("MainMenu");
