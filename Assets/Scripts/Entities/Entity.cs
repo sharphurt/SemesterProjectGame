@@ -47,15 +47,23 @@ namespace Entities
 
         public event ObjectDestroyHandler OnObjectDestroy;
 
+        private AudioSource damageSource;
+        private AudioSource carCrashSource;
+
         public virtual void Start()
         {
             gettingDamageAbility = GetComponent<GettingDamageAbility>();
             progressBarController.SetHealthBar(health, maxHealth, true);
             coinsCollector = FindObjectOfType<CoinsCollector>();
+            damageSource = GameObject.Find("DamageSound").GetComponent<AudioSource>();
+            carCrashSource = GameObject.Find("CarCrashSound").GetComponent<AudioSource>();
         }
 
         public void TakeDamage(float damage)
         {
+
+            damageSource.volume = CompareTag("Player") ? 0.6f : 0.3f;
+            damageSource.Play();
             gettingDamageAbility.Damage = damage;
             health -= gettingDamageAbility.Damage;
             progressBarController.SetHealthBar(health, maxHealth, false);
@@ -71,6 +79,8 @@ namespace Entities
 
         public virtual void Die()
         {
+            carCrashSource.Play();
+            
             if (dropsAfterDeath && Random.value <= boosterDropChance)
                 DropBooster();
 
