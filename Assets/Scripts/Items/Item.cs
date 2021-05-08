@@ -8,7 +8,13 @@ namespace Items
     public abstract class Item : MonoBehaviour
     {
         public GameObject pickEffect;
-        
+        private AudioSource pickupSound;
+
+        private void Start()
+        {
+            pickupSound = GameObject.Find("PickUpSound").GetComponent<AudioSource>();
+        }
+
         private void Update() =>
             transform.position += new Vector3(0, -GameManager.MovementSpeed * Time.deltaTime, 0);
 
@@ -17,6 +23,7 @@ namespace Items
             if (other.CompareTag("Player"))
             {
                 PickUp(other.gameObject.GetComponent<Player>());
+                pickupSound.Play();
                 Instantiate(pickEffect, transform.position, transform.rotation);
                 Destroy(gameObject);
             }
@@ -25,6 +32,5 @@ namespace Items
         public abstract void PickUp(Player picker);
 
         private void OnBecameInvisible() => Destroy(gameObject);
-
     }
 }
