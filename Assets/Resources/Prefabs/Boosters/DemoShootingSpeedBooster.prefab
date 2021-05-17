@@ -123,5 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickEffect: {fileID: 2029207891403620557, guid: 145d044bde23b1a4bb0baa02466c2746, type: 3}
+  inventoryIcon: {fileID: 21300000, guid: b2b02c8e5bb6f664fa17ed94d04f6da5, type: 3}
   duration: 10
   value: 3

@@ -37,7 +37,7 @@ namespace Entities
 
         public GameObject deathEffect;
 
-        public CoinsCollector coinsCollector;
+        private CoinsCollector coinsCollector;
 
         public ProgressBarController progressBarController;
 
@@ -53,28 +53,27 @@ namespace Entities
         public virtual void Start()
         {
             gettingDamageAbility = GetComponent<GettingDamageAbility>();
-            progressBarController.SetHealthBar(health, maxHealth, true);
+            progressBarController.SetHealthBar(health, maxHealth);
             coinsCollector = FindObjectOfType<CoinsCollector>();
             damageSource = GameObject.Find("DamageSound").GetComponent<AudioSource>();
             carCrashSource = GameObject.Find("CarCrashSound").GetComponent<AudioSource>();
         }
 
-        public void TakeDamage(float damage)
+        public virtual void TakeDamage(float damage)
         {
-
             damageSource.volume = CompareTag("Player") ? 0.6f : 0.3f;
             damageSource.Play();
             gettingDamageAbility.Damage = damage;
             health -= gettingDamageAbility.Damage;
-            progressBarController.SetHealthBar(health, maxHealth, false);
+            progressBarController.SetHealthBar(health, maxHealth);
             if (health <= 0)
                 Die();
         }
 
-        public void Heal(float value)
+        public virtual void Heal(float value)
         {
             health = Mathf.Clamp(health + value, 0, maxHealth);
-            progressBarController.SetHealthBar(health, maxHealth, false);
+            progressBarController.SetHealthBar(health, maxHealth);
         }
 
         public virtual void Die()

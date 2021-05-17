@@ -24,12 +24,12 @@ namespace Modifiers
 
         private float timer;
 
-        public Modifier(float value, float duration, string fieldName, SpriteRenderer spriteRenderer)
+        public Modifier(float value, float duration, string fieldName, Sprite sprite)
         {
             Duration = duration;
             Value = value;
             FieldName = fieldName;
-            Icon = spriteRenderer.sprite;
+            Icon = sprite;
 
             UpdateCaller.OnUpdate += Update;
         }

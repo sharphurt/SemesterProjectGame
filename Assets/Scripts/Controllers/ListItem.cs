@@ -7,6 +7,6 @@ namespace Controllers
     public class ListItem : MonoBehaviour
     {
         public Modifier modifier;
-        public ProgressBarWithIconController barWithIcon;
+        public CircularProgressBarWithIcon barWithIcon;
     }
 }

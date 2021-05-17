@@ -41,7 +41,7 @@ namespace Controllers
             modifier.OnUpdate += UpdateItem;
             instance.modifier = modifier;
             instance.barWithIcon.SetIcon(modifier.Icon);
-            instance.barWithIcon.SetHealthBar((int) modifier.Remained, (int) modifier.Duration, true);
+            instance.barWithIcon.SetProgressBar((int) modifier.Remained, (int) modifier.Duration);
         }
 
         private void RemoveItem(Modifier modifier) =>

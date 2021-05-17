@@ -14,7 +14,7 @@ namespace Boosters
         public override void PickUp(Player picker)
         {
             if (picker.TryGetComponent<GettingDamageAbility>(out var ability))
-                ability.AddModifier(new Modifier(value, duration, "Damage", gameObject.GetComponent<SpriteRenderer>()));
+                ability.AddModifier(new Modifier(value, duration, "Damage", inventoryIcon));
             else
                 Debug.LogError($"Cannot apply modifier to {picker} - entity hasn't appropriate ability");
         }

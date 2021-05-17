@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using Abilities;
+using Components.ActionComponents;
 using Entities;
 using Modifiers;
 using UnityEngine;
@@ -9,7 +10,7 @@ namespace Controllers
 {
     public abstract class GunController : MonoBehaviour
     {
-        protected ShootingAbility ShootingAbility;
+        public ShootingAbility ShootingAbility;
 
         [HideInInspector] public Collider2D shooterCollider;
         [HideInInspector] public string shooterTag;

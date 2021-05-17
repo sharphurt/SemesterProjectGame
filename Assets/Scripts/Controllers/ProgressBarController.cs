@@ -30,16 +30,10 @@ namespace Controllers
             }
         }
 
-        public void SetHealthBar(float value, float max, bool isInstantly)
+        public void SetHealthBar(float value, float max)
         {
             reachingHealth = value;
             maxHealth = max;
-            if (isInstantly)
-            {
-                currentValue = reachingHealth;
-                healthBar.color = gradient.Evaluate(1f / maxHealth * currentValue);
-                slider.value = 1f / maxHealth * currentValue;
-            }
         }
         
         public void UpdateValue(float value) => reachingHealth = value;

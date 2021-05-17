@@ -226,6 +226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe1cc28c333ebe145ba18c9143c351c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ShootingAbility: {fileID: 0}
   shooterCollider: {fileID: 0}
   shooterTag: 
   damage: 0
@@ -396,11 +397,10 @@ MonoBehaviour:
   maxHealth: 100
   entityName: 
   dropsAfterDeath: 1
-  boosterDropChance: 0.1
+  boosterDropChance: 1
   partsDropChance: 1
   damage: 0
   deathEffect: {fileID: 3836939733414368666, guid: a319d1d2018d89948adf076895d67118, type: 3}
-  coinsCollector: {fileID: 0}
   progressBarController: {fileID: 2802014715869994715}
   isTarget: 1
 --- !u!114 &8601021506798585039
@@ -415,6 +415,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7051d5fd8dbf48e586b3e47c0b11bf5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shootingPeriodCoefficient: 1
   shootingPeriod: 2
   bullet: {fileID: 5580910810217604282, guid: b8e62756e3e420649b396f2c48e3f108, type: 3}
   speed: 3

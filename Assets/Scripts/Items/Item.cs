@@ -2,6 +2,7 @@ using System;
 using Controllers;
 using Entities;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Items
 {
@@ -9,6 +10,8 @@ namespace Items
     {
         public GameObject pickEffect;
         private AudioSource pickupSound;
+
+        public Sprite inventoryIcon;
 
         private void Start()
         {

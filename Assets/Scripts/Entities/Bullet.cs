@@ -11,7 +11,7 @@ namespace Entities
 
             var entity = other.GetComponent<Entity>();
             if (entity != null)
-                entity.TakeDamage(damage);
+                entity.TakeDamage(damage * damageCoefficient);
 
             if (impactEffect != null)
                 Instantiate(impactEffect, transform.position, transform.rotation);
