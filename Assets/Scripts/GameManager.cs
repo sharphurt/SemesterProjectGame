@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using Entities;
 using Items;
 using LevelData;
@@ -32,20 +33,20 @@ public class GameManager : MonoBehaviour
 
     private bool isFinishing;
 
-    private int _score;
-
     public int Score
     {
-        get => _score;
+        get => Vars.Coins;
         set
         {
-            _score = value;
+            Vars.Coins = value;
             scoreText.text = value.ToString();
         }
     }
 
     private void Start()
     {
+        scoreText.text = Score.ToString();
+        
         Application.targetFrameRate = 300;
 
         MovementSpeed = levelMovementSpeed;
@@ -113,9 +114,9 @@ public class GameManager : MonoBehaviour
 
     private void GameWinHandler()
     {
-        if (PlayerPrefs.HasKey("lastLevel") && SceneLoader.CurrentLevel == PlayerPrefs.GetInt("lastLevel"))
+        if (SceneLoader.CurrentLevel == Vars.LastLevel)
         {
-            PlayerPrefs.SetInt("lastLevel", SceneLoader.CurrentLevel + 1);
+            Vars.LastLevel = SceneLoader.CurrentLevel + 1;
         }
         SceneManager.LoadScene("MainMenu");
     }
