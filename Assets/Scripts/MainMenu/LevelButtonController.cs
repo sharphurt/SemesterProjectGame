@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,7 @@ namespace MainMenu
         
         private void Start()
         {
-            if (SceneLoader.LastLevel < levelNumber)
+            if (Vars.LastLevel < levelNumber)
             {
                 GetComponent<SpriteRenderer>().color = new Color(0.3f, 0.3f, 0.3f);
                 transform.GetChild(0).GetChild(0).gameObject.GetComponent<Button>().enabled = false;

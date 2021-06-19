@@ -34,16 +34,18 @@ public class GameManager : MonoBehaviour
 
     public int Score
     {
-        get => GameInformation.score;
+        get => Vars.Coins;
         set
         {
-            GameInformation.score = value;
+            Vars.Coins = value;
             scoreText.text = value.ToString();
         }
     }
 
     private void Start()
     {
+        scoreText.text = Score.ToString();
+        
         Application.targetFrameRate = 300;
 
         MovementSpeed = levelMovementSpeed;
@@ -111,9 +113,9 @@ public class GameManager : MonoBehaviour
 
     private void GameWinHandler()
     {
-        if (PlayerPrefs.HasKey("lastLevel") && SceneLoader.CurrentLevel == PlayerPrefs.GetInt("lastLevel"))
+        if (SceneLoader.CurrentLevel == Vars.LastLevel)
         {
-            PlayerPrefs.SetInt("lastLevel", SceneLoader.CurrentLevel + 1);
+            Vars.LastLevel = SceneLoader.CurrentLevel + 1;
         }
         SceneManager.LoadScene("MainMenu");
     }

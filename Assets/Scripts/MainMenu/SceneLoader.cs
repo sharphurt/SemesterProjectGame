@@ -7,27 +7,10 @@ namespace MainMenu
     {
         public GameObject loadingObject;
 
-        public static int LastLevel
-        {
-            get
-            {
-                if (PlayerPrefs.HasKey("lastLevel"))
-                {
-                    return PlayerPrefs.GetInt("lastLevel");
-                }
-                else
-                {
-                    PlayerPrefs.SetInt("lastLevel", 1);
-                    return 1;
-                }
-            }
-        }
-
         public static int CurrentLevel;
     
         private void Start()
         {
-            
             SceneManager.sceneLoaded += OnSceneLoading;
         }
 
