@@ -24,7 +24,7 @@ namespace Entities
         public float boosterDropChance;
         public float partsDropChance;
 
-        [HideInInspector] public float damage;
+        public float damage;
 
         private Vector3 targetPosition;
         private float moveSpeed;

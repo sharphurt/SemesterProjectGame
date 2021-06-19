@@ -5878,7 +5878,7 @@ GameObject:
   - component: {fileID: 712831720}
   - component: {fileID: 712831721}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5897,8 +5897,8 @@ RectTransform:
   m_Children:
   - {fileID: 1828317436}
   - {fileID: 905257197}
-  m_Father: {fileID: 194421534}
-  m_RootOrder: 1
+  m_Father: {fileID: 832541059}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -6237,6 +6237,7 @@ RectTransform:
   - {fileID: 194421534}
   - {fileID: 1348960300}
   - {fileID: 1491092021}
+  - {fileID: 712831720}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

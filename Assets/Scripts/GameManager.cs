@@ -31,14 +31,12 @@ public class GameManager : MonoBehaviour
 
     private bool isFinishing;
 
-    private int _score;
-
     public int Score
     {
-        get => _score;
+        get => GameInformation.score;
         set
         {
-            _score = value;
+            GameInformation.score = value;
             scoreText.text = value.ToString();
         }
     }
