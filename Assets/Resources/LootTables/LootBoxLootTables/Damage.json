@@ -1,0 +1,33 @@
+{
+    "name": "Damage",
+    "chances": [
+        {
+            "partName": "Обычный",
+            "description": "+5 к урону игрока",
+            "prefabName": "Damage_orange",
+            "chance": 0.75,
+            "improvementValue": 5
+        },
+        {
+            "partName": "Уникальный",
+            "description": "+10 к урону игрока",
+            "prefabName": "Damage_blue",
+            "chance": 0.5,
+            "improvementValue": 10
+        },
+        {
+            "partName": "Редкий",
+            "description": "+20 к урону игрока",
+            "prefabName": "Damage_violet",
+            "chance": 0.2,
+            "improvementValue": 20
+        },
+        {
+            "partName": "Легендарный",
+            "description": "+35 к урону игрока",
+            "prefabName": "Damage_red",
+            "chance": 0.1,
+            "improvementValue": 35
+        }
+    ]
+}

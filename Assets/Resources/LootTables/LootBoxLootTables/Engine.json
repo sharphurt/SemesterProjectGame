@@ -1,0 +1,33 @@
+{
+    "name": "Engine",
+    "chances": [
+        {
+            "partName": "Обычный",
+            "description": "+25% к манёвренности",
+            "prefabName": "Engine_orange",
+            "chance": 0.75,
+            "improvementValue": 0.25
+        },
+        {
+            "partName": "Уникальный",
+            "description": "+50% манёвренности",
+            "prefabName": "Engine_blue",
+            "chance": 0.5,
+            "improvementValue": 0.5
+        },
+        {
+            "partName": "Редкий",
+            "description": "+70% к манёвренности",
+            "prefabName": "Engine_violet",
+            "chance": 0.2,
+            "improvementValue": 0.75
+        },
+        {
+            "partName": "Легендарный",
+            "description": "+100% к манёвренности",
+            "prefabName": "Engine_red",
+            "chance": 0.1,
+            "improvementValue": 1
+        }
+    ]
+}

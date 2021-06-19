@@ -1,0 +1,16 @@
+{
+    "boosters": [
+        {
+            "name": "ShootingSpeedBooster",
+            "chance": 0.5
+        },
+        {
+            "name": "InvincibleBooster",
+            "chance": 0.1
+        }
+    ],
+    "partsMaxCount": {
+        "Level1": 5,
+        "Level2": 5
+    }
+}
