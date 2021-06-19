@@ -6,6 +6,7 @@ using Entities;
 using Items;
 using LevelData;
 using LevelData.LootTable;
+using MainMenu;
 using Spawning;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -110,5 +111,12 @@ public class GameManager : MonoBehaviour
         isFinishing = true;
     }
 
-    private void GameWinHandler() => SceneManager.LoadScene("MainMenu");
+    private void GameWinHandler()
+    {
+        if (PlayerPrefs.HasKey("lastLevel") && SceneLoader.CurrentLevel == PlayerPrefs.GetInt("lastLevel"))
+        {
+            PlayerPrefs.SetInt("lastLevel", SceneLoader.CurrentLevel + 1);
+        }
+        SceneManager.LoadScene("MainMenu");
+    }
 }
