@@ -8,11 +8,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenu.unity
     guid: 29d213cb977c2c243b34ee04f9f08fff
-  - enabled: 0
-    path: Assets/Scenes/Level1_deprecated.unity
+  - enabled: 1
+    path: Assets/Scenes/Level0.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Level2.unity
+    path: Assets/Scenes/Level1.unity
     guid: 1ea28dec6062102438cc8b2cfde8db44
   - enabled: 1
     path: Assets/Scenes/PartsStore.unity
