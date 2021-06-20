@@ -30,7 +30,7 @@ public class LootBoxManager : MonoBehaviour
     {
         popup.SetActive(true);
         part = SelectPossiblePart(NormalizeChances(lootBoxData), Random.value);
-        GameInformation.score -= cost;
+        Vars.Coins -= cost;
         var image = Resources.Load<Image>($"Prefabs/Parts/{part.prefabName}");
         popup.transform.Find("Image").gameObject.GetComponent<Image>().sprite = image.sprite;
         popup.transform.Find("Name").gameObject.GetComponent<Text>().text = part.partName;
@@ -40,7 +40,7 @@ public class LootBoxManager : MonoBehaviour
     public void ClosePopUp()
     {
         popup.SetActive(false);
-        GameInformation.playerParts.Add(part);
+        Vars.CarParts = Vars.CarParts.Append(part).ToList();
         RenderPartsBar();
     }
 
@@ -53,8 +53,8 @@ public class LootBoxManager : MonoBehaviour
         foreach (Transform child in partsBar.transform)
             Destroy(child.gameObject);
 
-        foreach (var prefab in GameInformation.playerParts.Select(part =>
-            Resources.Load<GameObject>($"Prefabs/Parts/{part.prefabName}"))) 
+        foreach (var prefab in Vars.CarParts.Select(part =>
+            Resources.Load<GameObject>($"Prefabs/Parts/{part.prefabName}")))
             Instantiate(prefab, partsBar.transform);
     }
 

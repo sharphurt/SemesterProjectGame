@@ -6,6 +6,7 @@ using Entities;
 using Items;
 using LevelData;
 using LevelData.LootTable;
+using MainMenu;
 using Spawning;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -33,16 +34,18 @@ public class GameManager : MonoBehaviour
 
     public int Score
     {
-        get => GameInformation.score;
+        get => Vars.Coins;
         set
         {
-            GameInformation.score = value;
+            Vars.Coins = value;
             scoreText.text = value.ToString();
         }
     }
 
     private void Start()
     {
+        scoreText.text = Score.ToString();
+        
         Application.targetFrameRate = 300;
 
         MovementSpeed = levelMovementSpeed;
@@ -108,5 +111,12 @@ public class GameManager : MonoBehaviour
         isFinishing = true;
     }
 
-    private void GameWinHandler() => SceneManager.LoadScene("MainMenu");
+    private void GameWinHandler()
+    {
+        if (SceneLoader.CurrentLevel == Vars.LastLevel)
+        {
+            Vars.LastLevel = SceneLoader.CurrentLevel + 1;
+        }
+        SceneManager.LoadScene("MainMenu");
+    }
 }
