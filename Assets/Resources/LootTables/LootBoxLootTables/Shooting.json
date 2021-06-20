@@ -1,0 +1,33 @@
+{
+    "name": "Shooting",
+    "chances": [
+        {
+            "partName": "Обычный",
+            "description": "+10% к скорострельности",
+            "prefabName": "Shooting_orange",
+            "chance": 0.75,
+            "improvementValue": -0.1
+        },
+        {
+            "partName": "Уникальный",
+            "description": "+20% к скорострельности",
+            "prefabName": "Shooting_blue",
+            "chance": 0.5,
+            "improvementValue": -0.2
+        },
+        {
+            "partName": "Редкий",
+            "description": "+35% к скорострельности",
+            "prefabName": "Shooting_violet",
+            "chance": 0.2,
+            "improvementValue": -0.35
+        },
+        {
+            "partName": "Легендарный",
+            "description": "+50% к скорострельности",
+            "prefabName": "Shooting_red",
+            "chance": 0.1,
+            "improvementValue": -0.5
+        }
+    ]
+}

@@ -21,7 +21,7 @@ namespace Spawning
         public event WavesAreOverHandler OnWavesOver;
 
         private readonly List<Enemy> currentWave = new List<Enemy>();
-        
+
         public void SpawnWaves() => StartCoroutine(SpawnWavesCoroutine(GameManager.LevelData.waves));
 
         private IEnumerator SpawnWavesCoroutine(IEnumerable<WaveData> waves)
@@ -47,7 +47,8 @@ namespace Spawning
                 var instance = SpawnEnemy(GameManager.EnemyPrefabs[e.prefab], e.spawnPosition);
                 instance.SetMaxHealth(e.hp, true);
                 instance.damage = e.damage;
-                instance.MoveTo(e.position, e.movingSpeed != 0f ? e.movingSpeed : movingToDestinationSpeed, e.moveByArc);
+                instance.MoveTo(e.position, e.movingSpeed != 0f ? e.movingSpeed : movingToDestinationSpeed,
+                    e.moveByArc);
             }
         }
 
@@ -56,7 +57,7 @@ namespace Spawning
             var point = spawnPoint;
             if (spawnPoint == Vector2.zero)
                 point = RandomUtils.RandomPointInBounds(spawningArea);
-            
+
             var instance = Instantiate(enemy, point, Quaternion.identity);
             instance.entityName = enemy.name;
             instance.OnObjectDestroy += id => currentWave.RemoveAll(e => e.GetInstanceID() == id);

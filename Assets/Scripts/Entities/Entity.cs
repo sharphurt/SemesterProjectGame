@@ -24,7 +24,7 @@ namespace Entities
         public float boosterDropChance;
         public float partsDropChance;
 
-        [HideInInspector] public float damage;
+        public float damage;
 
         private Vector3 targetPosition;
         private float moveSpeed;
@@ -103,7 +103,7 @@ namespace Entities
 
         private void DropParts()
         {
-            var partsCount = Random.Range(1, GameManager.LootTables[entityName].partsMaxCount[gameObject.scene.name]);
+            var partsCount = Random.Range(1, GameManager.LootTables[entityName.Replace("(Clone)", "")].partsMaxCount[gameObject.scene.name]);
             for (var i = 0; i < partsCount; i++)
             {
                 coinsCollector.StartCoinMove(transform.position,
@@ -113,13 +113,13 @@ namespace Entities
 
         private Item SelectBoosterToDrop()
         {
-            if (!GameManager.LootTables.ContainsKey(entityName))
+            if (!GameManager.LootTables.ContainsKey(entityName.Replace("(Clone)", "")))
             {
                 Debug.LogError($"There is no loot table for entity \"{name}\"");
                 return null;
             }
 
-            var lootTable = GameManager.LootTables[entityName];
+            var lootTable = GameManager.LootTables[entityName.Replace("(Clone)", "")];
             var normalizedItems = NormalizeBoosterChances(lootTable);
             var possibleBooster = SelectPossibleBooster(normalizedItems, Random.value);
 

@@ -1,0 +1,33 @@
+{
+    "name": "Armor",
+    "chances": [
+        {
+            "partName": "Обычный",
+            "description": "+25 к здоровью игрока",
+            "prefabName": "Armor_orange",
+            "chance": 0.75,
+            "improvementValue": 25
+        },
+        {
+            "partName": "Уникальный",
+            "description": "+50 к здоровью игрока",
+            "prefabName": "Armor_blue",
+            "chance": 0.5,
+            "improvementValue": 50
+        },
+        {
+            "partName": "Редкий",
+            "description": "+80 к здоровью игрока",
+            "prefabName": "Armor_violet",
+            "chance": 0.2,
+            "improvementValue": 80
+        },
+        {
+            "partName": "Легендарный",
+            "description": "+110 к здоровью игрока",
+            "prefabName": "Armor_red",
+            "chance": 0.1,
+            "improvementValue": 110
+        }
+    ]
+}
