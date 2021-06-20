@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CarParts;
 using Controllers;
+using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.UI;
 using Utils;
@@ -13,7 +14,10 @@ public class LootBoxManager : MonoBehaviour
     private List<CarPartData> lootBoxData = new List<CarPartData>();
 
     public GameObject popup;
+    public GameObject notEnoughMoneyPopUp;
+    public GameObject lootBoxButton;
     public Text costText;
+    public Text coins;
     public int cost;
     public GameObject partsBar;
 
@@ -23,25 +27,37 @@ public class LootBoxManager : MonoBehaviour
     {
         lootBoxData = LootBoxDataLoader.Load();
         costText.text = cost.ToString();
+        coins.text = Vars.Coins.ToString();
         RenderPartsBar();
     }
 
     public void Buy()
     {
+        if (Vars.Coins < cost)
+        {
+            notEnoughMoneyPopUp.SetActive(true);
+            return;
+        }
+
         popup.SetActive(true);
         part = SelectPossiblePart(NormalizeChances(lootBoxData), Random.value);
-        GameInformation.score -= cost;
-        var image = Resources.Load<Image>($"Prefabs/Parts/{part.prefabName}");
+        Vars.Coins -= cost;
+        var image = Resources.Load<Image>($"Prefabs/Parts/{part.PrefabName}");
         popup.transform.Find("Image").gameObject.GetComponent<Image>().sprite = image.sprite;
-        popup.transform.Find("Name").gameObject.GetComponent<Text>().text = part.partName;
-        popup.transform.Find("Description").gameObject.GetComponent<Text>().text = part.description;
+        popup.transform.Find("Name").gameObject.GetComponent<Text>().text = part.PartName;
+        popup.transform.Find("Description").gameObject.GetComponent<Text>().text = part.Description;
     }
 
-    public void ClosePopUp()
+    public void ClosePartInfoPopUp()
     {
         popup.SetActive(false);
-        GameInformation.playerParts.Add(part);
+        Vars.CarParts = Vars.CarParts.Append(part).ToList();
         RenderPartsBar();
+    }
+
+    public void CloseNotEnoughMoneyPopUp()
+    {
+        notEnoughMoneyPopUp.SetActive(false);
     }
 
     public void SellPart()
@@ -53,8 +69,8 @@ public class LootBoxManager : MonoBehaviour
         foreach (Transform child in partsBar.transform)
             Destroy(child.gameObject);
 
-        foreach (var prefab in GameInformation.playerParts.Select(part =>
-            Resources.Load<GameObject>($"Prefabs/Parts/{part.prefabName}"))) 
+        foreach (var prefab in Vars.CarParts.Select(part =>
+            Resources.Load<GameObject>($"Prefabs/Parts/{part.PrefabName}")))
             Instantiate(prefab, partsBar.transform);
     }
 
@@ -81,13 +97,13 @@ public class LootBoxManager : MonoBehaviour
             var chance = normalizedChances[i] / normalizedChances.Sum();
             normalized.Add(new CarPart
             {
-                partType = (PartType) Enum.Parse(typeof(PartType), part.Name),
-                chance = chance,
-                improvementValue = part.ImprovementValue,
-                name = part.Name,
-                description = part.Description,
-                partName = part.PartName,
-                prefabName = part.PrefabName
+                PartType = (PartType) Enum.Parse(typeof(PartType), part.Name),
+                Chance = chance,
+                ImprovementValue = part.ImprovementValue,
+                Name = part.Name,
+                Description = part.Description,
+                PartName = part.PartName,
+                PrefabName = part.PrefabName
             });
         }
 
@@ -97,11 +113,11 @@ public class LootBoxManager : MonoBehaviour
 
     private CarPart SelectPossiblePart(List<CarPart> parts, float chance)
     {
-        var sorted = parts.OrderBy(e => e.chance).ToList();
+        var sorted = parts.OrderBy(e => e.Chance).ToList();
 
         for (var i = 0; i < sorted.Count; i++)
         {
-            var chanceOfPart = sorted.Take(i).Select(e => e.chance).Sum() + sorted[i].chance;
+            var chanceOfPart = sorted.Take(i).Select(e => e.Chance).Sum() + sorted[i].Chance;
             if (chanceOfPart >= chance)
                 return sorted[i];
         }

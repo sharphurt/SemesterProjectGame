@@ -1,13 +1,16 @@
+using System;
+
 namespace CarParts
 {
+    [Serializable]
     public class CarPart
     {
-        public string name;
-        public string partName;
-        public string description;
-        public string prefabName;
-        public PartType partType;
-        public float chance;
-        public float improvementValue;
+        public string Name { get; set; }
+        public string PartName { get; set; }
+        public string Description { get; set; }
+        public string PrefabName { get; set; }
+        public PartType PartType { get; set; }
+        public float Chance { get; set; }
+        public float ImprovementValue { get; set; }
     }
 }

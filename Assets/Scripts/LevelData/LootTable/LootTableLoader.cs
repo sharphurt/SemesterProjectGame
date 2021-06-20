@@ -7,7 +7,7 @@ namespace LevelData.LootTable
     public static class LootTableLoader
     {
         public static Dictionary<string, LootTable> LoadLootTables() =>
-            JsonParser.GetAllJsonFiles("LootTables/EnemyLootTable").ToDictionary(
+            JsonParser.GetAllJsonFiles("LootTables/EnemyLootTables").ToDictionary(
                 f => f.name, f => JsonParser.Parse<LootTable>(f.text));
     }
 }
