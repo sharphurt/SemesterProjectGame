@@ -8,7 +8,7 @@ namespace MainMenu
         public GameObject loadingObject;
 
         public static int CurrentLevel;
-    
+
         private void Start()
         {
             SceneManager.sceneLoaded += OnSceneLoading;
@@ -25,6 +25,11 @@ namespace MainMenu
         {
             loadingObject.SetActive(false);
             Debug.Log($"{scene.name} loaded");
+        }
+
+        public void LoadStoreScene()
+        {
+            SceneManager.LoadScene("PartsStore");
         }
     }
 }
