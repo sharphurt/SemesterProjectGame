@@ -31,5 +31,10 @@ namespace MainMenu
         {
             SceneManager.LoadScene("PartsStore");
         }
+
+        public void LoadConfiguratorScene()
+        {
+            SceneManager.LoadScene("Configuration");
+        }
     }
 }

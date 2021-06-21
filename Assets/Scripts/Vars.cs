@@ -43,12 +43,22 @@ namespace DefaultNamespace
                     PlayerPrefs.SetString("carParts", JsonConvert.SerializeObject(new List<CarPart>()));
                 return JsonConvert.DeserializeObject<List<CarPart>>(PlayerPrefs.GetString("carParts"));
             }
-            set
-            {
-                var s = JsonConvert.SerializeObject(value);
-                PlayerPrefs.SetString("carParts", s);
-                Debug.Log(s);
-            }
+            set => PlayerPrefs.SetString("carParts", JsonConvert.SerializeObject(value));
+        }
+
+        public static void SaveCarPart(CarPart part)
+        {
+            if (!PlayerPrefs.HasKey(part.PartType.ToString()))
+                PlayerPrefs.SetString(part.PartType.ToString(), JsonConvert.SerializeObject(null));
+
+            PlayerPrefs.SetString(part.PartType.ToString(), JsonConvert.SerializeObject(part));
+        }
+
+        public static CarPart GetCarPart(PartType type)
+        {
+            return !PlayerPrefs.HasKey(type.ToString())
+                ? null
+                : JsonConvert.DeserializeObject<CarPart>(PlayerPrefs.GetString(type.ToString()));
         }
     }
 }

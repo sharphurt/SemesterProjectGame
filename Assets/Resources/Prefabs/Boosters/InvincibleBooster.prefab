@@ -73,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c103aaea87dec17449f553845c0817b7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2cd9f96ec6c09347a2cfdf95c952e79, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.88, y: 1.88}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.88, y: 1.88}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.88, y: 1.88}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -123,6 +123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pickEffect: {fileID: 2029207891403620557, guid: e16fbfc05cef60d4d9a4952c04e20b3e, type: 3}
-  inventoryIcon: {fileID: 21300000, guid: e61f3cc0d9cb4524799fd29d2cd751d8, type: 3}
+  inventoryIcon: {fileID: 21300000, guid: 492086295d56667409b90e5329bd9dc8, type: 3}
   duration: 10
   value: 10

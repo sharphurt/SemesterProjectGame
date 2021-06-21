@@ -5,6 +5,7 @@ using CarParts;
 using Controllers;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Utils;
 using Random = UnityEngine.Random;
@@ -123,5 +124,10 @@ public class LootBoxManager : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

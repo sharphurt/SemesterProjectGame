@@ -65,6 +65,7 @@ namespace Entities
             damageSource.Play();
             gettingDamageAbility.Damage = damage;
             health -= gettingDamageAbility.Damage;
+            Debug.Log(health);
             progressBarController.SetHealthBar(health, maxHealth);
             if (health <= 0)
                 Die();

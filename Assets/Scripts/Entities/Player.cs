@@ -1,7 +1,11 @@
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using Abilities;
+using CarParts;
 using Components.ActionComponents;
 using Controllers;
+using DefaultNamespace;
 using UnityEngine;
 using Utils;
 
@@ -19,6 +23,12 @@ namespace Entities
         private EngineComponent engineComponent;
         private AimingComponent aimingComponent;
         private DamageComponent damageComponent;
+
+        public CarPart enginePart;
+        public CarPart shootingPart;
+        public CarPart armorPart;
+        public CarPart damagePart;
+
 
         public delegate void PlayerDeathHandler(string killer);
 
@@ -39,12 +49,38 @@ namespace Entities
             rb = GetComponent<Rigidbody2D>();
             playerCollider = GetComponent<Collider2D>();
             playerGun = GetComponentInChildren<GunController>();
+            
+            damagePart = Vars.GetCarPart(PartType.Damage);
+            shootingPart = Vars.GetCarPart(PartType.Shooting);
+            armorPart = Vars.GetCarPart(PartType.Armor);
+            enginePart = Vars.GetCarPart(PartType.Engine);
             base.Start();
+            StartCoroutine(ApplyParts());
+        }
+
+
+        private IEnumerator ApplyParts()
+        {
+            yield return new WaitForFixedUpdate();
+            
+            if (damagePart != null)
+                playerGun.damage += damagePart.ImprovementValue;
+
+            if (shootingPart != null)
+                playerGun.ShootingAbility.ShootingPeriod += shootingPart.ImprovementValue;
+
+            if (armorPart != null)
+            {
+                maxHealth += armorPart.ImprovementValue;
+                health += armorPart.ImprovementValue;
+            }
+
+            if (enginePart != null)
+                acceleration += enginePart.ImprovementValue;
         }
 
         void FixedUpdate()
         {
-            Debug.Log(engineComponent.Value);
             var screenEdges = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             var boundsHalfSize = playerCollider.bounds.size / 2f;
             rb.position = new Vector2(
