@@ -70,7 +70,10 @@ namespace Entities
                 playerGun.ShootingAbility.ShootingPeriod += shootingPart.ImprovementValue;
 
             if (armorPart != null)
+            {
                 maxHealth += armorPart.ImprovementValue;
+                health += armorPart.ImprovementValue;
+            }
 
             if (enginePart != null)
                 acceleration += enginePart.ImprovementValue;
@@ -78,7 +81,6 @@ namespace Entities
 
         void FixedUpdate()
         {
-            Debug.Log(engineComponent.Value);
             var screenEdges = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
             var boundsHalfSize = playerCollider.bounds.size / 2f;
             rb.position = new Vector2(

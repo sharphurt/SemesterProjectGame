@@ -848,7 +848,7 @@ MonoBehaviour:
   lootBoxButton: {fileID: 0}
   costText: {fileID: 1073733715}
   coins: {fileID: 1207576492}
-  cost: 0
+  cost: 100
   partsBar: {fileID: 1504978048}
 --- !u!4 &465617407
 Transform:
@@ -6618,11 +6618,11 @@ RectTransform:
   m_Father: {fileID: 82518627}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -278.63815, y: 648.1886}
-  m_SizeDelta: {x: 87.223, y: 50.378}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: -278.63818, y: -38.622375}
+  m_SizeDelta: {x: 87.22299, y: 50.37799}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1205360856
 MonoBehaviour:
   m_ObjectHideFlags: 0
