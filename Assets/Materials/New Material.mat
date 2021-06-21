@@ -90,5 +90,5 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Flip: {r: 1, g: 1, b: 1, a: 1}
     - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
-    - _WidthHeightRadius: {r: 5.580488, g: 7.865, b: 4.93, a: 0}
+    - _WidthHeightRadius: {r: 71.3697, g: 7.865, b: 4.93, a: 0}
   m_BuildTextureStacks: []
