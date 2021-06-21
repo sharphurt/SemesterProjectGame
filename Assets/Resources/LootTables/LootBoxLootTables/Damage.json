@@ -27,7 +27,7 @@
             "description": "+35 к урону игрока",
             "prefabName": "Damage_red",
             "chance": 0.1,
-            "improvementValue": 35
+            "improvementValue": 75
         }
     ]
 }

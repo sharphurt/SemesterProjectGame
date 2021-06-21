@@ -57,6 +57,7 @@ public class GameManager : MonoBehaviour
         entitySpawner = GetComponent<EntitySpawner>();
         player = FindObjectOfType<Player>();
 
+
         EnemyPrefabs = LoadEnemyPrefabs();
         ItemPrefabs = LoadItems();
 
